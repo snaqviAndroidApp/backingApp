@@ -13,7 +13,7 @@ Output: Master - Detail results are below respectively
 <p> ------------------------------------------------------------------------------- </p>
 </hr>
 <p align="right"> 
-<img src="https://github.com/snaqviAndroidApp/movieAppOne/blob/master/app/src/main/res/drawable/master.png"width="200"/>
+<img src=" "width="200"/>
 </p>                                                                                                                           
 </hr>
 </hr>
