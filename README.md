@@ -1,9 +1,8 @@
-# movieAppTwo
-2nd Project-II for Udacity
+# BakingApp
+4th Project for Udacity
 
-To fetch popular movies, you will use the API from themoviedb.org.
-To access the Movies data using API, you need to create account by signing up using the link provided below 
-https://www.themoviedb.org/?_dc=1553763797
+The JSON file contains the recipes' instructions, ingredients, videos and images you will need to complete this project. Don’t assume that all steps of the recipe have a video. Some may have a video, an image, or no visual media at all.
+One of the skills in this project is how to handle unexpected input in your data 
 
 <p>
 Used grid layout, with RecyclerView to paint it, and there are two sorting using rating and popularity
