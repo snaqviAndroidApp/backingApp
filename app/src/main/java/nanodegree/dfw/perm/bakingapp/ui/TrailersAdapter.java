@@ -1,4 +1,4 @@
-package nanodegree.dfw.perm.moviesTwo.ui;
+package nanodegree.dfw.perm.bakingapp.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import java.util.ArrayList;
 
-import nanodegree.dfw.perm.moviesTwo.R;
+import nanodegree.dfw.perm.bakingapp.R;
 
 public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.PostersViewHolder> {
 

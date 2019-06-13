@@ -1,4 +1,4 @@
-package nanodegree.dfw.perm.moviesTwo;
+package nanodegree.dfw.perm.bakingapp;
 
 import org.junit.Test;
 

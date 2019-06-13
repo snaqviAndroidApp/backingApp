@@ -1,4 +1,4 @@
-package nanodegree.dfw.perm.moviesTwo.utilities;
+package nanodegree.dfw.perm.bakingapp.utilities;
 
 import android.net.Uri;
 

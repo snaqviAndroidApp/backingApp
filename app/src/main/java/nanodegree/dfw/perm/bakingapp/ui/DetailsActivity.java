@@ -1,5 +1,5 @@
 
-package nanodegree.dfw.perm.moviesTwo.ui;
+package nanodegree.dfw.perm.bakingapp.ui;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -24,11 +24,11 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import nanodegree.dfw.perm.moviesTwo.R;
-import nanodegree.dfw.perm.moviesTwo.data.background.AppExecutors;
-import nanodegree.dfw.perm.moviesTwo.data.handler.DetailsDataHandler;
-import nanodegree.dfw.perm.moviesTwo.data.db.MoviesDatabase;
-import nanodegree.dfw.perm.moviesTwo.data.db.MovieEntries;
+import nanodegree.dfw.perm.bakingapp.R;
+import nanodegree.dfw.perm.bakingapp.data.background.AppExecutors;
+import nanodegree.dfw.perm.bakingapp.data.handler.DetailsDataHandler;
+import nanodegree.dfw.perm.bakingapp.data.db.MoviesDatabase;
+import nanodegree.dfw.perm.bakingapp.data.db.MovieEntries;
 
 
 public class DetailsActivity extends AppCompatActivity

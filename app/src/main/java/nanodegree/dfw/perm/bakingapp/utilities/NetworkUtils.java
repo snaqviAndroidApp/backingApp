@@ -1,4 +1,4 @@
-package nanodegree.dfw.perm.moviesTwo.utilities;
+package nanodegree.dfw.perm.bakingapp.utilities;
 
 /*
  * Copyright (C) 2016 The Android Open Source Project

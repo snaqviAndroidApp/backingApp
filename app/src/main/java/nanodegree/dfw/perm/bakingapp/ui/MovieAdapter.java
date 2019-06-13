@@ -1,4 +1,4 @@
-package nanodegree.dfw.perm.moviesTwo.ui;
+package nanodegree.dfw.perm.bakingapp.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,16 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Objects;
 
-import nanodegree.dfw.perm.moviesTwo.R;
-import nanodegree.dfw.perm.moviesTwo.data.handler.PrimaryMoviesDataHandler;
+import nanodegree.dfw.perm.bakingapp.R;
+import nanodegree.dfw.perm.bakingapp.data.handler.PrimaryMoviesDataHandler;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
