@@ -18,8 +18,8 @@ Output: Master - Detail results are below respectively
 </hr>
 </hr>
 <p align="right"> 
-<img src="https://github.com/snaqviAndroidApp/movieAppOne/blob/master/app/src/main/res/drawable/details.png"width="200"/>  
-<img src="https://github.com/snaqviAndroidApp/movieAppOne/blob/master/app/src/main/res/drawable/details2.png"width="200"/>
+<img src=""width="200"/>  
+<img src=""width="200"/>
 </p>                                                                                                                           
 
 </hr>
