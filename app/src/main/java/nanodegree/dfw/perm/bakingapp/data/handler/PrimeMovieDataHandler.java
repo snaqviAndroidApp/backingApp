@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.utilities.NetworkUtils;
 
-public class PrimaryMoviesDataHandler {
+public class PrimeMovieDataHandler {
 
     private String poster_path;
     private String backDrop_path;
@@ -28,8 +28,8 @@ public class PrimaryMoviesDataHandler {
     }
 
 
-    public PrimaryMoviesDataHandler(String poster_path, String backDrop_pathC, String original_title, String overview, String release_date, double vote_average,
-                                    double popularity, String failure_status, ArrayList movie_reviews, ArrayList trailer_id) {
+    public PrimeMovieDataHandler(String poster_path, String backDrop_pathC, String original_title, String overview, String release_date, double vote_average,
+                                 double popularity, String failure_status, ArrayList movie_reviews, ArrayList trailer_id) {
         this.poster_path = poster_path;
         this.backDrop_path = backDrop_pathC;
         this.original_title = original_title;
@@ -86,7 +86,7 @@ public class PrimaryMoviesDataHandler {
 
     @Override
     public String toString() {
-        return "PrimaryMoviesDataHandler{" +
+        return "PrimeMovieDataHandler{" +
                 "poster_path='" + poster_path + '\'' +
                 ", backDrop_path='" + backDrop_path + '\'' +
                 ", original_title='" + original_title + '\'' +

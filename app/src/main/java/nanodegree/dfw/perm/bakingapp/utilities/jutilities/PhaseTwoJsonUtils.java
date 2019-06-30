@@ -1,4 +1,4 @@
-package nanodegree.dfw.perm.bakingapp.utilities;
+package nanodegree.dfw.perm.bakingapp.utilities.jutilities;
 
 import android.content.Context;
 
@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class PhaseTwoJsonUtils extends MovieJsonUtils {
+public class PhaseTwoJsonUtils {
 
     private static final String MOVIE_RESULTS = "results";
     private static final String MOVIE_REVIEWS_CONTENT = "content";
@@ -35,7 +35,5 @@ public class PhaseTwoJsonUtils extends MovieJsonUtils {
         return _results;
     }
 
-    private static void parseJsonArray(JSONObject oTrailer) {
-    }
 
 }

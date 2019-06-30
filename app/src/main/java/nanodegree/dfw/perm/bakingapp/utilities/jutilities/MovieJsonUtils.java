@@ -1,4 +1,4 @@
-package nanodegree.dfw.perm.bakingapp.utilities;
+package nanodegree.dfw.perm.bakingapp.utilities.jutilities;
 
 import android.content.Context;
 
@@ -9,11 +9,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import nanodegree.dfw.perm.bakingapp.data.handler.PrimaryMoviesDataHandler;
+import nanodegree.dfw.perm.bakingapp.data.handler.PrimeMovieDataHandler;
 
 public class MovieJsonUtils {
     private static final String MOVIE_ID = "id";
-
     private static final String MOVIE_POSTER_PATH = "poster_path";
     private static final String MOVIE_POSTER_THUMB = "backdrop_path";
     private static final String MOVIE_ORIGINAL_TITLE = "original_title";
@@ -23,13 +22,13 @@ public class MovieJsonUtils {
     private static final String MOVIE_RATING = "vote_average";
     private static final String MOVIE_POPULARITY = "popularity";
 
-    public static HashMap<Integer, PrimaryMoviesDataHandler> getMoviesStringsFromJson(Context context, String forecastJsonStr,
-                                                                                      ArrayList<String> _reviewsIn, ArrayList<String> _trailerId)
+    public static HashMap<Integer, PrimeMovieDataHandler>  getMoviesStringsFromJson(Context context, String forecastJsonStr,
+                                                                                   ArrayList<String> _reviewsIn, ArrayList<String> _trailerId)
             throws JSONException {
         HashMap movieData = new HashMap();
         JSONObject forecastJson = new JSONObject(forecastJsonStr);
         movieData.put(Integer.valueOf(forecastJson.getString(MOVIE_ID)),
-                new PrimaryMoviesDataHandler(
+                new PrimeMovieDataHandler(
                         forecastJson.getString(MOVIE_POSTER_PATH),
                         forecastJson.getString(MOVIE_POSTER_THUMB),
                         forecastJson.getString(MOVIE_ORIGINAL_TITLE),
@@ -45,15 +44,15 @@ public class MovieJsonUtils {
         return movieData;
     }
 
-    public static ArrayList<HashMap<Integer, PrimaryMoviesDataHandler>> getOrderingMoviesStrings(Context context, String toOrderJsonStr,
-                                                                                                 ArrayList<String> _reviewsIn, ArrayList _traildIdIn)
+    public static ArrayList<HashMap<Integer, PrimeMovieDataHandler>> getOrderingMoviesStrings(Context context, String toOrderJsonStr,
+                                                                                              ArrayList<String> _reviewsIn, ArrayList _traildIdIn)
             throws JSONException {
-        ArrayList<HashMap<Integer, PrimaryMoviesDataHandler>> moviesListToOrder = new ArrayList<>();
+        ArrayList<HashMap<Integer, PrimeMovieDataHandler>> moviesListToOrder = new ArrayList<>();
         JSONArray inMoviesJson_UnOrdered = new JSONObject(toOrderJsonStr).getJSONArray("results");
         for (int toOderMovies = 0; toOderMovies < inMoviesJson_UnOrdered.length(); toOderMovies++) {
             HashMap orderedMovieData = new HashMap();
             orderedMovieData.put(toOderMovies,
-                    new PrimaryMoviesDataHandler(
+                    new PrimeMovieDataHandler(
                             inMoviesJson_UnOrdered.getJSONObject(toOderMovies).getString(MOVIE_POSTER_PATH),
                             inMoviesJson_UnOrdered.getJSONObject(toOderMovies).getString(MOVIE_POSTER_THUMB),
                             inMoviesJson_UnOrdered.getJSONObject(toOderMovies).getString(MOVIE_ORIGINAL_TITLE),

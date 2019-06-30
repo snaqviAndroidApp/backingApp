@@ -39,6 +39,10 @@ public class NetworkUtils {
             "https://api.themoviedb.org/3/movie";
     protected static final String _BASE_URL = BASE_MOVIES_URL;
     protected static final String POSTER_BASE_URL_MAIN = "http://image.tmdb.org/t/p";
+
+    protected static final String BAKING_BASE_URL_ = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
+
+
     protected static final String POSTER_BASE_URL_MAIN_RATED = "http://api.themoviedb.org/3/movie/top_rated";
     protected static final String POSTER_BASE_URL_MAIN_POPULAR = "http://api.themoviedb.org/3/movie/popular";
     protected static final String OPTIMUM_SIZE = "w185";
@@ -54,6 +58,18 @@ public class NetworkUtils {
         Uri builtUri = Uri.parse(_BASE_URL).buildUpon()
                 .appendEncodedPath(numOfMovies)
                 .appendQueryParameter(PARAM_KEY, KEY_VALUE)
+                .build();
+        URL url = null;
+        try {
+            url = new URL(builtUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+
+    public static URL buildBakingUrl() {
+        Uri builtUri = Uri.parse(BAKING_BASE_URL_).buildUpon()
                 .build();
         URL url = null;
         try {
