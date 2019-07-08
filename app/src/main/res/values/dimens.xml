@@ -3,5 +3,8 @@
     <dimen name="detailsActMain_padding">4dp</dimen>
     <dimen name="detailsActMain_margin">14dp</dimen>
     <dimen name="tv_padding">5dp</dimen>
+    <dimen name="tvIngredients_TextSize">10sp</dimen>
+    <dimen name="tvTitle_TextSize">20sp</dimen>
+    <dimen name="mainAct_padding">8dp</dimen>
 
 </resources>

@@ -9,30 +9,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import nanodegree.dfw.perm.bakingapp.R;
 
-public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewsViewHolder> {
+public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.ReviewsViewHolder> {
+
+    /** the code that works fine with StringBuilder
+     * however needs hardcoding for getItemCount() to be '1'
+     *
+     */
+
     private static final String TAG = TrailersAdapter.class.getSimpleName();
     private ArrayList<String> mReviewsClicked;
     private int colorNum = 0;
+
+    /** trying to convert ArrayList to String / StrinbBuilder **/
+
 
     public class ReviewsViewHolder extends RecyclerView.ViewHolder {
         TextView t_ReviewText;
 
         public ReviewsViewHolder(@NonNull View itemView) {
             super(itemView);
-            t_ReviewText = itemView.findViewById(R.id.tv_reviewsDetails);
+            t_ReviewText = itemView.findViewById(R.id.tv_IngDetails);
         }
 
         public void bind(String inStr) {
-                t_ReviewText.setText(inStr);
-            if(colorNum == 0){
-                t_ReviewText.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorReview));
-            }else {
-                t_ReviewText.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorReview2));
-            }
-                colorNum++;
+            t_ReviewText.setText(inStr);
+            t_ReviewText.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorReview));
         }
     }
 
@@ -49,7 +54,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewsV
     @Override
     public void onBindViewHolder(ReviewsViewHolder pholder, int position) {
         if(getItemCount() != 0){
-                pholder.bind(mReviewsClicked.get(position));
+            pholder.bind(mReviewsClicked.get(position));
             colorNum += 10;
         }
     }
@@ -61,8 +66,15 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewsV
     }
 
     public void setValidReviews(ArrayList<String> reviewsIn) {
-        mReviewsClicked = reviewsIn;
+        mReviewsClicked = new ArrayList<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        reviewsIn.forEach(inTemp -> {
+           stringBuilder.append(inTemp);
+        });
+        mReviewsClicked.add(stringBuilder.toString());
         notifyDataSetChanged();
     }
 }
+
+
 

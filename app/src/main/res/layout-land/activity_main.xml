@@ -5,12 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="72dp"
+    android:layout_marginTop="48dp"
     android:layout_marginBottom="48dp"
     android:layout_marginStart="56dp"
     android:layout_marginEnd="56dp"
     tools:context=".app.MainActivity">
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <FrameLayout
         android:id="@+id/frMainRecipes_container"
         android:layout_width="match_parent"
@@ -22,9 +25,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
     </FrameLayout>
 
+</ScrollView>
 
 </android.support.constraint.ConstraintLayout>

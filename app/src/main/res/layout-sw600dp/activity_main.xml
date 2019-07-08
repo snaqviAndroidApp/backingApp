@@ -1,73 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="56dp"
     android:layout_marginTop="72dp"
-    android:layout_marginEnd="56dp"
     android:layout_marginBottom="48dp"
+    android:layout_marginStart="56dp"
+    android:layout_marginEnd="56dp"
     android:orientation="horizontal"
     tools:context=".app.MainActivity">
 
-    <!--<fragment-->
-        <!--android:id="@+id/fragTabletMain"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--&gt;-->
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_movie"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:foregroundGravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </android.support.v7.widget.RecyclerView>
-
-    <!--</fragment>-->
-
-    <View
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
+    <FrameLayout
+        android:id="@+id/frMainRecipes_container"
+        android:layout_width="wrap_content"
+        android:layout_height="797dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_margin="2dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/dummyFrame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/frlDetailContainer"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/ic_action_icon"
-        android:layout_margin="8dp"
-        android:layout_weight="3" />
-
-    <ProgressBar
-        android:id="@+id/mv_loading_indicator"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_gravity="center"
+        android:id="@+id/dummyFrame"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:visibility="invisible"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/frMainRecipes_container"></FrameLayout>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

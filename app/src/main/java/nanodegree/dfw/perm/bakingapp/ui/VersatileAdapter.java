@@ -6,10 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
@@ -75,10 +73,9 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder movieViewHolder, int position) {
-
-            RecipiesHandler mRecipeStr = recipiesHForAdapter.get(position);
-            recipesStr = mRecipeStr.getName();
-            tvRecipes.setText(recipesStr);
+        RecipiesHandler mRecipeStr = recipiesHForAdapter.get(position);
+        recipesStr = mRecipeStr.getName();
+        tvRecipes.setText(recipesStr);
     }
 
     @Override

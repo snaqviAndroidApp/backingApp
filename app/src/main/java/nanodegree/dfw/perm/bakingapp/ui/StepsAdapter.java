@@ -11,15 +11,17 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
+import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 
 public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.PostersViewHolder> {
 
     private static final String TAG = TrailersAdapter.class.getSimpleName();
-    private ArrayList<String> mTrailerClickedList;
+    private ArrayList<Steps> mTrailerClickedList;
     final private TrailersOnClickHandler mTrailerClickHandler;
 
     public interface TrailersOnClickHandler {
-        default void onTrailerItemClickListener(String trailerClicked, int adapterPos) {
+        default void onTrailerItemClickListener(Steps trailerClicked, int adapterPos) {
+
         }
     }
 
@@ -37,7 +39,10 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Poster
             itemView.setOnClickListener(this);
         }
 
-        public void bind(int position) {  }
+        public void bind(int position) {
+
+
+        }
 
         @Override
         public void onClick(View v) {
@@ -59,7 +64,9 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Poster
 
     @Override
     public void onBindViewHolder(PostersViewHolder pholder, int position) {
-        pholder.bind(position);
+        if(getItemCount() != 0){
+            pholder.bind(position);
+        }
     }
 
     @Override
@@ -68,7 +75,7 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Poster
         return mTrailerClickedList.size();
     }
 
-    public void setValidTrailers(ArrayList<String> trailersIn) {
+    public void setValidTrailers(ArrayList<Steps> trailersIn) {
         mTrailerClickedList = trailersIn;
         notifyDataSetChanged();
     }

@@ -1,10 +1,13 @@
 package nanodegree.dfw.perm.bakingapp.data.handler.baking;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Steps {
+public class Steps implements Parcelable {
 
         private Integer id;
         private String shortDescription;
@@ -34,45 +37,70 @@ public class Steps {
             this.thumbnailURL = thumbnailURL;
         }
 
-        public Integer getId() {
-            return id;
+
+//        public void setId(Integer id) {
+//            this.id = id;
+//        }
+
+    protected Steps(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        shortDescription = in.readString();
+        description = in.readString();
+        videoURL = in.readString();
+        thumbnailURL = in.readString();
+    }
+
+    public static final Creator<Steps> CREATOR = new Creator<Steps>() {
+        @Override
+        public Steps createFromParcel(Parcel in) {
+            return new Steps(in);
         }
 
-        public void setId(Integer id) {
-            this.id = id;
+        @Override
+        public Steps[] newArray(int size) {
+            return new Steps[size];
         }
+    };
 
+    public Integer getId() {
+    return id;
+}
         public String getShortDescription() {
             return shortDescription;
         }
-
-        public void setShortDescription(String shortDescription) {
-            this.shortDescription = shortDescription;
-        }
-
         public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
+        return description;
+    }
         public String getVideoURL() {
-            return videoURL;
-        }
-
-        public void setVideoURL(String videoURL) {
-            this.videoURL = videoURL;
-        }
-
+        return videoURL;
+    }
         public String getThumbnailURL() {
-            return thumbnailURL;
-        }
+        return thumbnailURL;
+    }
 
-        public void setThumbnailURL(String thumbnailURL) {
-            this.thumbnailURL = thumbnailURL;
-        }
+
+//    public void setShortDescription(String shortDescription) {
+//            this.shortDescription = shortDescription;
+//        }
+
+
+//        public void setDescription(String description) {
+//            this.description = description;
+//        }
+
+
+//        public void setVideoURL(String videoURL) {
+//            this.videoURL = videoURL;
+//        }
+
+
+//        public void setThumbnailURL(String thumbnailURL) {
+//            this.thumbnailURL = thumbnailURL;
+//        }
 
         @Override
         public String toString() {
@@ -96,4 +124,22 @@ public class Steps {
             return new EqualsBuilder().append(id, rhs.id).append(shortDescription, rhs.shortDescription).append(description, rhs.description).append(videoURL, rhs.videoURL).append(thumbnailURL, rhs.thumbnailURL).isEquals();
         }
 
+    @Override
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(shortDescription);
+        dest.writeString(description);
+        dest.writeString(videoURL);
+        dest.writeString(thumbnailURL);
+    }
+}

@@ -14,8 +14,8 @@ public class RecipiesHandler implements Parcelable{
 
         private Integer id;
         private String name;
-        private List<Ingredients> ingredients = new ArrayList<Ingredients>();
-        private List<Steps> steps = new ArrayList<Steps>();
+        private ArrayList<Ingredients> ingredients = new ArrayList<Ingredients>();
+        private ArrayList<Steps> steps = new ArrayList<Steps>();
         private Integer servings;
         private String image;
 
@@ -34,7 +34,7 @@ public class RecipiesHandler implements Parcelable{
          * @param image
          * @param steps
          */
-        public RecipiesHandler(Integer id, String name, List<Ingredients> ingredients, List<Steps> steps, Integer servings, String image) {
+        public RecipiesHandler(Integer id, String name, ArrayList<Ingredients> ingredients, ArrayList<Steps> steps, Integer servings, String image) {
             super();
             this.id = id;
             this.name = name;
@@ -76,10 +76,10 @@ public class RecipiesHandler implements Parcelable{
         public String getName() {
             return name;
         }
-        public List<Ingredients> getIngredients() {
+        public ArrayList<Ingredients> getIngredients() {
             return ingredients;
         }
-        public List<Steps> getSteps() {
+        public ArrayList<Steps> getSteps() {
             return steps;
         }
         public Integer getServings() {
