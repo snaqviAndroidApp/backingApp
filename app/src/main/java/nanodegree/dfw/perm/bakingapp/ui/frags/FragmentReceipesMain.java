@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
 
 import org.json.JSONException;
 
@@ -98,7 +98,6 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.L
      * @return A new instance of fragment FragmentReceipesMain.
      */
     // TODO: Rename and change types and number of parameters
-//    public static FragmentReceipesMain newInstance(String param1, String param2) {
     public static FragmentReceipesMain newInstance(boolean param1, String param2) {
         FragmentReceipesMain fragment = new FragmentReceipesMain();
         Bundle args = new Bundle();
@@ -122,9 +121,8 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.L
                              Bundle savedInstanceState) {
 
         _initialize();
-        new ConnectionUtilities().getConnCheckHanlde();                     // Checking Connectivity (internet)
-
         rootView = inflater.inflate(R.layout.recipes_main_views, container, false);
+
         mLoadIndicator = rootView.findViewById(R.id.mv_loading_indicator);              // needs to put in respective in layout files place
         mRecyclerView = rootView.findViewById(R.id.recyclerview_recipes);
         if(!bTwoPaneFromAct){
@@ -136,21 +134,18 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.L
             mRecyclerView.setLayoutManager(gridLayoutManager);
             mRecyclerView.setHasFixedSize(true);
         }
-
         return rootView;
     }
 
     private void _initialize() {
         schPeriod = 1;
         threadCounts = 0;
+        new ConnectionUtilities().getConnCheckHanlde();         // Checking Connectivity (internet)
     }
 
     public void getTwoPaneVal(boolean bVal){
-        // update TwoPane condition
-        bTwoPaneFromAct = bVal;
+        bTwoPaneFromAct = bVal;                                 // update TwoPane condition
     }
-
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(boolean ifTwoPane) {
@@ -183,14 +178,13 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.L
         ingredientsIn = recipeId.getIngredients();
         stepsIn = recipeId.getSteps();
 
-//        Toast.makeText(getActivity().getBaseContext(), String.format("Recipie no: %d", recipeId.getId()),  Toast.LENGTH_LONG).show();
-        Toast.makeText(getActivity().getBaseContext(), String.format("%d. %s ",recipeId.getId(), recipeId.getName()),  Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity().getBaseContext(), String.format("%d. %s ",recipeId.getId(), recipeId.getName()),  Toast.LENGTH_SHORT).show();
+
         Intent iDetailsAct = new Intent(getActivity(), DetailsActivity.class);
-
         iDetailsAct.putExtra(NAME, recipeId.getName());
-
         iDetailsAct.putParcelableArrayListExtra(INGREDIENTS_List, recipeId.getIngredients());
-        iDetailsAct.putParcelableArrayListExtra(STEPS_List, recipeId.getSteps());
+        iDetailsAct.putParcelableArrayListExtra(STEPS_List
+                , recipeId.getSteps());
         startActivity(iDetailsAct);
     }
 

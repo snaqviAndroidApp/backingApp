@@ -27,6 +27,7 @@ import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 import nanodegree.dfw.perm.bakingapp.ui.frags.FragmentReceipesMain;
 import nanodegree.dfw.perm.bakingapp.ui.frags.FragmentRecipesDetails;
+import nanodegree.dfw.perm.bakingapp.ui.frags.tablet.TabletSetpDetails;
 
 
 public class DetailsActivity extends AppCompatActivity implements FragmentRecipesDetails.OnFragmentInteractionListener {
@@ -42,23 +43,24 @@ public class DetailsActivity extends AppCompatActivity implements FragmentRecipe
         determinePaneLayoutDetails();
         if(isTwoPaneDetails){
 
-            FragmentManager fragMain = getSupportFragmentManager();                        // Get FragmentManager
+            FragmentManager fragDetails = getSupportFragmentManager();                        // Get FragmentManager
+            FragmentManager fragDetailsSec = getSupportFragmentManager();                     // Get FragmentManager-Tablet-Sec
 
             FragmentRecipesDetails fragmentDetailsTwoPane = new FragmentRecipesDetails();
             fragmentDetailsTwoPane.getTwoPaneValDetail(true);
-            fragMain.beginTransaction()
+            fragDetails.beginTransaction()
                     .add(R.id.frDetails_container_land_prime, fragmentDetailsTwoPane)
                     .commit();
 
-
             /**  Inflate the secondary_fragment in Tablet-firmWare **/
-            FragmentRecipesDetails fragmentDetailsTwoPaneSec = new FragmentRecipesDetails();
+//            FragmentRecipesDetails fragmentDetailsTwoPaneSec = new FragmentRecipesDetails();
+//            fragmentDetailsTwoPaneSec.getTwoPaneValDetail(true);
 
-            fragmentDetailsTwoPaneSec.getTwoPaneValDetail(true);
-
-            fragMain.beginTransaction()
-                    .add(R.id.frDetails_container_land_sec, fragmentDetailsTwoPaneSec)
-                    .commit();
+            TabletSetpDetails tabletStepDetailsFrag = new TabletSetpDetails();
+//            fragDetailsSec.beginTransaction()
+////                    .add(R.id.frDetails_container_land_sec, fragmentDetailsTwoPaneSec)
+//                    .add(R.id.frDetails_container_land_sec, tabletStepDetailsFrag)          // attempting to inflate required Steps-Clips on Tablet
+//                    .commit();
             /**  Inflate the secondary_fragment in Tablet-firmWare ENDS **/
 
         }else {

@@ -11,7 +11,7 @@ import nanodegree.dfw.perm.bakingapp.ui.frags.FragmentReceipesMain;
 
 public class MainActivity extends AppCompatActivity implements FragmentReceipesMain.OnFragmentInteractionListener {
 
-    private MoviesDatabase mdB_MainActivity;                                 // MovieApp Stage Two Database
+    private MoviesDatabase mdB_MainActivity;                                           // MovieApp Stage Two Database
     public boolean isTwoPane;
 
     @Override
@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity implements FragmentReceipesM
                     .add(R.id.frMainRecipes_container, fragmentReceipesMain)
                     .commit();
         }else {
-            FragmentReceipesMain fragmentReceipesMainTwoPane = new FragmentReceipesMain().newInstance(true, "");
+            FragmentReceipesMain fragmentRecipesMainTwoPane = new FragmentReceipesMain();
             FragmentManager fragMain = getSupportFragmentManager();
-            fragmentReceipesMainTwoPane.getTwoPaneVal(true);
+            fragmentRecipesMainTwoPane.getTwoPaneVal(true);
             fragMain.beginTransaction()
-                    .add(R.id.frMainRecipes_container, fragmentReceipesMainTwoPane)
+                    .add(R.id.frMainRecipes_container, fragmentRecipesMainTwoPane)
                     .commit();
         }
     }
@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity implements FragmentReceipesM
     private void determinePaneLayout() {                    // checking for Second-Pane availability
         isTwoPane = false;
         FrameLayout fragmentItemDetail = findViewById(R.id.dummyFrame);
-        // If there is a second pane for details
-        if (fragmentItemDetail != null) {
+        if (fragmentItemDetail != null) {                               // If there is a second pane for details
             isTwoPane = true;
         }
     }

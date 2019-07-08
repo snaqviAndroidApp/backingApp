@@ -20,7 +20,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
      *
      */
 
-    private static final String TAG = TrailersAdapter.class.getSimpleName();
+    private static final String TAG = StepsAdapter.class.getSimpleName();
     private ArrayList<String> mReviewsClicked;
     private int colorNum = 0;
 

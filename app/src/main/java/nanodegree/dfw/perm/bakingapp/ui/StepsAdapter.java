@@ -8,25 +8,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 
-public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.PostersViewHolder> {
+public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.PostersViewHolder> {
 
-    private static final String TAG = TrailersAdapter.class.getSimpleName();
-    private ArrayList<Steps> mTrailerClickedList;
-    final private TrailersOnClickHandler mTrailerClickHandler;
+    private static final String TAG = StepsAdapter.class.getSimpleName();
+    private ArrayList<Steps> mStepsClickedList;
+    final private StepsOnClickHandler mStepsClickHandler;
 
-    public interface TrailersOnClickHandler {
-        default void onTrailerItemClickListener(Steps trailerClicked, int adapterPos) {
-
-        }
+    public interface StepsOnClickHandler {
+        default void onTrailerItemClickListener(Steps stepClicked, int adapterPos) { }
     }
 
-    public TrailersAdapter(TrailersOnClickHandler trailerClickHandler) {
-        mTrailerClickHandler = trailerClickHandler;
+    public StepsAdapter(StepsOnClickHandler stepsClickHandler) {
+        mStepsClickHandler = stepsClickHandler;
     }
 
     public class PostersViewHolder extends RecyclerView.ViewHolder
@@ -39,16 +39,15 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Poster
             itemView.setOnClickListener(this);
         }
 
-        public void bind(int position) {
-
-
-        }
+        public void bind(int position) { }
 
         @Override
         public void onClick(View v) {
-            int trailerAdapterPosition = getAdapterPosition();
-            mTrailerClickHandler.onTrailerItemClickListener(mTrailerClickedList.get(trailerAdapterPosition), trailerAdapterPosition);
-            Log.d("_tClick", "trailer: " + trailerAdapterPosition + " clicked");
+            int stepsAdapterPosition = getAdapterPosition();
+            Toast.makeText(v.getContext(), "Hi in Steps no: " + stepsAdapterPosition, Toast.LENGTH_SHORT).show();
+
+            mStepsClickHandler.onTrailerItemClickListener(mStepsClickedList.get(stepsAdapterPosition), stepsAdapterPosition);
+            Log.d("_tClick", "trailer: " + stepsAdapterPosition + " clicked");
         }
     }
 
@@ -71,12 +70,12 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.Poster
 
     @Override
     public int getItemCount() {
-        if (null == mTrailerClickedList) return 0;
-        return mTrailerClickedList.size();
+        if (null == mStepsClickedList) return 0;
+        return mStepsClickedList.size();
     }
 
-    public void setValidTrailers(ArrayList<Steps> trailersIn) {
-        mTrailerClickedList = trailersIn;
+    public void setValidTrailers(ArrayList<Steps> stepsRcvdList) {
+        mStepsClickedList = stepsRcvdList;
         notifyDataSetChanged();
     }
 }
