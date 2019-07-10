@@ -2,44 +2,33 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
-
+    android:layout_height="wrap_content">
 
     <ScrollView
-        android:layout_width="723dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.v7.widget.CardView
             android:id="@+id/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_IngDetails"
-                android:layout_width="634dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="18dp"
-                android:layout_marginLeft="24dp"
-                android:textSize="8sp"
                 android:background="@color/colorReview3"
                 android:contentDescription="@string/reviews_detail"
-                android:paddingStart="24dp"
-                android:textAlignment="gravity" />
+                android:textSize="@dimen/tvIngredients_TextSize"
+                android:padding="4dp"
+                android:textStyle="bold" />
 
         </android.support.v7.widget.CardView>
 

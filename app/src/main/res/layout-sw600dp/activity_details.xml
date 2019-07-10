@@ -13,9 +13,9 @@
 
     <FrameLayout
         android:id="@+id/frDetails_container_land_prime"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:layout_margin="4dp"
     />
 
@@ -26,10 +26,10 @@
 
     <FrameLayout
         android:id="@+id/frDetails_container_land_sec"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:layout_margin="4dp"
+        android:layout_weight="1"
+        android:padding="4dp"
         tools:ignore="WebViewLayout">
 
     </FrameLayout>

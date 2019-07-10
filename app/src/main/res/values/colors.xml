@@ -10,6 +10,8 @@
     <color name="colorReview3">#E1F2F7</color>
     <color name="colorReview4">#EDEEF3</color>
     <color name="colorView">#B3BEF8</color>
+    <color name="colorPhClips">#DFBFB7</color>
+    <color name="colorTabClips">#F5AB75</color>
 
     <style name="playbutton">
         <item name="android:layout_width">wrap_content</item>

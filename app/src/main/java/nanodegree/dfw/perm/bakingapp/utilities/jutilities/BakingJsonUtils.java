@@ -38,27 +38,6 @@ public class BakingJsonUtils {
     private static final String BAKING_STEPS_VIDEOURL = "videoURL";
     private static final String BAKING_STEPS_THUMBURL = "thumbnailURL";
 
-
-//    public RecipiesHandler(Integer id, String name, List<Ingredients> ingredients, List<Steps> steps, Integer servings, String image) {
-//        super();
-//        this.id = id;                         // DONE
-//        this.name = name;                     // DONE
-//        this.ingredients = ingredients;
-//        this.steps = steps;
-//        this.servings = servings;
-//        this.image = image;
-//    }
-
-//    Steps:
-//  {
-//    private Integer id;
-//    private String shortDescription;
-//    private String description;
-//    private String videoURL;
-//    private String thumbnailURL;
-//  }
-
-
     public static ArrayList<RecipiesHandler> parseBakingJnData(Context context, String _rawJBakingData)
                 throws JSONException {
         ArrayList<RecipiesHandler> recipiesList = new ArrayList<>();

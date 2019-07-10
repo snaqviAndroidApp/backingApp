@@ -65,19 +65,6 @@ public class Ingredients implements Parcelable{
         return ingredientsList;
     }
 
-
-/** ------------- **/
-//    public void setQuantity(Integer quantity) {
-//        this.quantity = quantity;
-//    }
-//    public void setMeasure(String measure) {
-//        this.measure = measure;
-//    }
-//    public void setIngredientsList(String ingredientsList) {
-//        this.ingredientsList = ingredientsList;
-//    }
-    /** ------------- **/
-
     @Override
     public String toString() {
         return new ToStringBuilder(this).append("quantity", quantity).append("measure", measure).append("ingredientsList", ingredientsList).toString();
@@ -101,21 +88,6 @@ public class Ingredients implements Parcelable{
     }
 
 
-//    @Override
-//    public int hashCode() {
-//        return new HashCodeBuilder().append(measure).append(ingredientsList).append(quantity).toHashCode();
-//    }
-//
-//    @Override
-//    public boolean equals(Object other) {
-//        if (other == this) {
-//            return true;
-//        }
-//        if ((other instanceof Ingredients) == false) {
-//            return false;
-//        }
-//        Ingredients rhs = ((Ingredients) other);
-//        return new EqualsBuilder().append(measure, rhs.measure).append(ingredientsList, rhs.ingredientsList).append(quantity, rhs.quantity).isEquals();
-//    }
+
 
 }

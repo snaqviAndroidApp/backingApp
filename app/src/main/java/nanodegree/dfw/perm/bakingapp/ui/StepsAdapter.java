@@ -44,10 +44,9 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.PostersViewH
         @Override
         public void onClick(View v) {
             int stepsAdapterPosition = getAdapterPosition();
-            Toast.makeText(v.getContext(), "Hi in Steps no: " + stepsAdapterPosition, Toast.LENGTH_SHORT).show();
-
             mStepsClickHandler.onTrailerItemClickListener(mStepsClickedList.get(stepsAdapterPosition), stepsAdapterPosition);
-            Log.d("_tClick", "trailer: " + stepsAdapterPosition + " clicked");
+            Log.d("_tClick", String.format("in stepAdapter, step: %s  clicked \nVideoUrl: %s", stepsAdapterPosition
+                    , mStepsClickedList.get(stepsAdapterPosition).getVideoURL()));
         }
     }
 

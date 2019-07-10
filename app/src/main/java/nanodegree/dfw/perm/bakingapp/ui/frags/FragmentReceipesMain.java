@@ -53,7 +53,8 @@ import static nanodegree.dfw.perm.bakingapp.data.Strings.STEPS_List;
  * Use the {@link FragmentReceipesMain#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentReceipesMain extends Fragment implements VersatileAdapter.ListItemClickListener {
+public class FragmentReceipesMain extends Fragment implements VersatileAdapter.OnRecipesClickListener {
+//public class FragmentReceipesMain extends Fragment  {
 
     View rootView;
 
@@ -172,14 +173,10 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.L
     }
 
     @Override
-    public void onRecipesItemClickListener(RecipiesHandler recipeId) {                  // OnClickEvents coming from recipesMainRecyclerView
+    public void onRecipesSelected(RecipiesHandler recipeId) {                  // OnClickEvents coming from recipesMainRecyclerView
 
-        // get Details Recipies data to be sent to details-View (Activity / Landscape: Fragment)
         ingredientsIn = recipeId.getIngredients();
         stepsIn = recipeId.getSteps();
-
-//        Toast.makeText(getActivity().getBaseContext(), String.format("%d. %s ",recipeId.getId(), recipeId.getName()),  Toast.LENGTH_SHORT).show();
-
         Intent iDetailsAct = new Intent(getActivity(), DetailsActivity.class);
         iDetailsAct.putExtra(NAME, recipeId.getName());
         iDetailsAct.putParcelableArrayListExtra(INGREDIENTS_List, recipeId.getIngredients());

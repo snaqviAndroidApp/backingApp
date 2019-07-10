@@ -82,26 +82,6 @@ public class Steps implements Parcelable {
         return thumbnailURL;
     }
 
-
-//    public void setShortDescription(String shortDescription) {
-//            this.shortDescription = shortDescription;
-//        }
-
-
-//        public void setDescription(String description) {
-//            this.description = description;
-//        }
-
-
-//        public void setVideoURL(String videoURL) {
-//            this.videoURL = videoURL;
-//        }
-
-
-//        public void setThumbnailURL(String thumbnailURL) {
-//            this.thumbnailURL = thumbnailURL;
-//        }
-
         @Override
         public String toString() {
             return new ToStringBuilder(this).append("id", id).append("shortDescription", shortDescription).append("description", description).append("videoURL", videoURL).append("thumbnailURL", thumbnailURL).toString();

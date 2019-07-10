@@ -5,26 +5,29 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
+import nanodegree.dfw.perm.bakingapp.data.Strings;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 import nanodegree.dfw.perm.bakingapp.ui.IngredientsAdapter;
+import nanodegree.dfw.perm.bakingapp.ui.PhoneActSteps;
 import nanodegree.dfw.perm.bakingapp.ui.StepsAdapter;
+import nanodegree.dfw.perm.bakingapp.ui.frags.tablet.StepClips;
 
 import static nanodegree.dfw.perm.bakingapp.data.Strings.INGREDIENTS_List;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.NAME;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.STEPS_List;
+import static nanodegree.dfw.perm.bakingapp.data.Strings.STEP_CLIP_TEXT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,9 +39,11 @@ import static nanodegree.dfw.perm.bakingapp.data.Strings.STEPS_List;
  */
 public class FragmentRecipesDetails extends Fragment implements StepsAdapter.StepsOnClickHandler {
 
+    //public class FragmentRecipesDetails extends Fragment {
+
     View rootDView;
 
-    private Steps stepsIn;
+    private Steps stepsInDetails;
 
     LinearLayoutManager ingredientsLayoutManager;
     LinearLayoutManager stepsLayoutManager;
@@ -50,13 +55,13 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
     private ArrayList<String> listIngredients;
 
     private String _dName;
-
     TextView vTitle;
     private Intent mIntent;
 
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -96,6 +101,10 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        _dStepsList = new ArrayList<>();
+        _dIngredientsList = new ArrayList<>();
+        listIngredients = new ArrayList<>();
+        _dName = null;
         mIntent = getActivity().getIntent();                        // extract details-info: Ingredients, Steps
 
     }
@@ -104,7 +113,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootDView =  inflater.inflate(R.layout.fragment_fragment_recipes_details, container, false);
+        rootDView =  inflater.inflate(R.layout.fragment_recipes_details, container, false);
         vTitle = rootDView.findViewById(R.id.tvOriginalTitle);
         intializeDetails(rootDView);
 
@@ -113,8 +122,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         mIngredientsRecyclerView = rootDView.findViewById(R.id.recyclerVIngredients);       // Ingredients
         mIngredientsRecyclerView.setHasFixedSize(true);
 
-        // Inflate the layout for this fragment
-        if(bTwoPaneFromAct_detail){
+//        if(bTwoPaneFromAct_detail){
             ingredientsLayoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
             mIngredientsRecyclerView.setLayoutManager(ingredientsLayoutManager);
             mIngredientsRecyclerView.setHasFixedSize(true);
@@ -123,7 +131,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
             mStepsRecyclerView.setLayoutManager(stepsLayoutManager);
             mStepsRecyclerView.setHasFixedSize(true);
 
-        }else {
+//        }else {
             ingredientsLayoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
             mIngredientsRecyclerView.setLayoutManager(ingredientsLayoutManager);
             mIngredientsRecyclerView.setHasFixedSize(true);
@@ -131,8 +139,9 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
             stepsLayoutManager = new LinearLayoutManager((getActivity().getBaseContext()), LinearLayoutManager.VERTICAL, false);
             mStepsRecyclerView.setLayoutManager(stepsLayoutManager);
             mStepsRecyclerView.setHasFixedSize(true);
-        }
+//        }
         setAdapter();
+
         return rootDView;
     }
 
@@ -149,11 +158,6 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
     private void intializeDetails(View rootDView) {
 
         // TODO: Initialize fields/ views
-        _dStepsList = new ArrayList<>();
-        _dIngredientsList = new ArrayList<>();
-        listIngredients = new ArrayList<>();
-        _dName = null;
-
         _dIngredientsList = (ArrayList<Ingredients>) mIntent.getExtras().get(INGREDIENTS_List);
         _dName = mIntent.getExtras().get(NAME).toString();
         vTitle.setText(_dName);
@@ -195,6 +199,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
     public void onDetach() {
         super.onDetach();
         mListener = null;
+
     }
 
     /**
@@ -215,7 +220,27 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
 
     @Override
     public void onTrailerItemClickListener(Steps stepClicked, int adapterPos) {
-        stepsIn = stepClicked;
-        Toast.makeText(getActivity(), "stepsIn" + stepsIn.getDescription(), Toast.LENGTH_LONG).show();
+
+        stepsInDetails = stepClicked;
+        Bundle bStepsClips = new Bundle();
+        bStepsClips.putString(Strings.STEP_CLIP_INDEX, stepsInDetails.getVideoURL());
+        bStepsClips.putInt(Strings.STEP_INDEX, adapterPos);
+        bStepsClips.putString(STEP_CLIP_TEXT, stepsInDetails.getDescription());
+
+        if (bTwoPaneFromAct_detail) {
+            FragmentManager fragDetailsSelf = getActivity().getSupportFragmentManager();
+            StepClips _insideFragDetails = new StepClips();
+            _insideFragDetails.setArguments(bStepsClips);
+            _insideFragDetails.setBundle(true);                     // Sending Valid Clips to TabletStepDetails
+
+            fragDetailsSelf.beginTransaction()
+                    .replace(R.id.frDetails_container_land_sec, _insideFragDetails)          // inflating the right-Tablet (2nd) Fragment
+                    .commit();
+        } else {
+            Intent phoneActIntent = new Intent(getActivity(), PhoneActSteps.class);
+            phoneActIntent.putExtras(bStepsClips);
+            startActivity(phoneActIntent);
+        }
     }
+
 }

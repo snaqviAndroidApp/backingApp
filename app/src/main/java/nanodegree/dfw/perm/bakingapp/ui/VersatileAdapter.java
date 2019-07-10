@@ -16,14 +16,14 @@ import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipiesHandler;
 public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.MovieViewHolder> {
 
     private ArrayList<RecipiesHandler> recipiesHForAdapter;
-    private ListItemClickListener mRecipesClickListener;
+    private OnRecipesClickListener mRecipesClickListener;
 
     int adapterPosition = 0;
     String recipesStr = null;
     TextView tvRecipes;
 
 
-    public interface ListItemClickListener {
+    public interface OnRecipesClickListener {
         /**
          * Successful implementation of onClick Event Handling for MainActivity Posters
          * as well as for Favorite-Posters
@@ -33,11 +33,18 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
          *                    initially used for MainActivity posters that is
          *                    starting point for the App
          **/
-        default void onRecipesItemClickListener(RecipiesHandler reipesId) { }
+        default void onRecipesSelected(RecipiesHandler reipesId) { }
     }
 
-    public VersatileAdapter(ListItemClickListener recipesItemsClickListener) {
-        mRecipesClickListener = recipesItemsClickListener;
+    public VersatileAdapter(OnRecipesClickListener recipesItemsClickListener) {
+
+        try{
+            mRecipesClickListener = recipesItemsClickListener;
+        }catch (ClassCastException e){
+            throw new ClassCastException(recipesItemsClickListener.toString()
+                    + "must implement OnRecipesClickListener");
+        }
+
     }
 
     public class MovieViewHolder extends RecyclerView.ViewHolder
@@ -45,8 +52,6 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
 
         MovieViewHolder(@NonNull View itemView) {
             super(itemView);
-//            mMovieImageView = itemView.findViewById(R.id.poster_master);
-//            mMovieImageView = itemView.findViewById(R.id.poster_master);
             tvRecipes = itemView.findViewById(R.id.tvRecipes);
             tvRecipes.setBackground(null);
             itemView.setOnClickListener(this);
@@ -55,7 +60,7 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
         @Override
         public void onClick(View v) {
             adapterPosition = getAdapterPosition();
-            mRecipesClickListener.onRecipesItemClickListener(recipiesHForAdapter.get(adapterPosition));
+            mRecipesClickListener.onRecipesSelected(recipiesHForAdapter.get(adapterPosition));
         }
     }
 
@@ -84,23 +89,11 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
         return recipiesHForAdapter.size();
     }
 
-//    public void setMoviePosters(ArrayList<PrimeMovieDataHandler> movieDataRcvd, String ifSorting){
-//        mMoviesClickedList = movieDataRcvd;
-//        sorting = ifSorting;
-//        notifyDataSetChanged();
-//    }
-
-
-//    public void setMovieFavPosters(ArrayList<String> favList, String ifSorting) {
-//        mFavMovieReceived = favList;
-//        sorting = ifSorting;
-//        notifyDataSetChanged();
-//    }
 
     /** Favorite Movies Handler
      * @param recipiesListIn brings in the List of recipes List
      **/
-    public void setRecipes(ArrayList<RecipiesHandler> recipiesListIn) {                         // Recipies
+    public void setRecipes(ArrayList<RecipiesHandler> recipiesListIn) {                         // Recipes
         recipiesHForAdapter = recipiesListIn;
         notifyDataSetChanged();
     }

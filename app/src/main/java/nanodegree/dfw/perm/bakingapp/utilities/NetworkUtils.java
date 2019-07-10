@@ -31,42 +31,8 @@ import java.util.Scanner;
 
 public class NetworkUtils {
 
-    protected static final String TAG = NetworkUtils.class.getSimpleName();
-    protected final static String PARAM_KEY = "api_key";
-//    protected final static String KEY_VALUE = "YOUR KEY";
-    protected final static String KEY_VALUE = "fcb4ae381c4482341fc74a85ea0b071a";
-    protected static final String BASE_MOVIES_URL =
-            "https://api.themoviedb.org/3/movie";
-    protected static final String _BASE_URL = BASE_MOVIES_URL;
-    protected static final String POSTER_BASE_URL_MAIN = "http://image.tmdb.org/t/p";
-
+    private static Uri builtStepUri;
     protected static final String BAKING_BASE_URL_ = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
-
-
-    protected static final String POSTER_BASE_URL_MAIN_RATED = "http://api.themoviedb.org/3/movie/top_rated";
-    protected static final String POSTER_BASE_URL_MAIN_POPULAR = "http://api.themoviedb.org/3/movie/popular";
-    protected static final String OPTIMUM_SIZE = "w185";
-    protected static final String OPTIMUM_SIZE_92 = "w92";
-    protected static final String OPTIMUM_SIZE_154 = "w154";
-    /**
-     * Builds the URL used to talk to the Movie server [api] server
-     * @implNote ----> Current consumption <--------
-     * @param numOfMovies The total-Movies-numbre that will be queried for.
-     * @return The URL to use to query the weather server.
-     */
-    public static URL buildUrl(String numOfMovies) {
-        Uri builtUri = Uri.parse(_BASE_URL).buildUpon()
-                .appendEncodedPath(numOfMovies)
-                .appendQueryParameter(PARAM_KEY, KEY_VALUE)
-                .build();
-        URL url = null;
-        try {
-            url = new URL(builtUri.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return url;
-    }
 
     public static URL buildBakingUrl() {
         Uri builtUri = Uri.parse(BAKING_BASE_URL_).buildUpon()
@@ -80,44 +46,13 @@ public class NetworkUtils {
         return url;
     }
 
-    public static URL buildPosterUrl(String imageLocation) {
-        Uri builtUri = Uri.parse(POSTER_BASE_URL_MAIN).buildUpon()
-                .appendEncodedPath(OPTIMUM_SIZE)
-                .appendEncodedPath(imageLocation)
-                .build();
-        URL urlPoster = null;
-        try {
-            urlPoster = new URL(builtUri.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return urlPoster;
-    }
 
-    public static URL buildToOrderPostersUrl(String orderBy) {
-        URL urlPosterOrdered = null;
-        if (orderBy.equals("popularity")) {
-            Uri builtUri = Uri.parse(POSTER_BASE_URL_MAIN_POPULAR).buildUpon()
-                    .appendQueryParameter(PARAM_KEY, KEY_VALUE)
+    public static Uri buildStepsUrl(String stepClip){
+            builtStepUri = Uri.parse(stepClip)
+                    .buildUpon()
                     .build();
-            try {
-                urlPosterOrdered = new URL(builtUri.toString());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        } else {
-                Uri builtUri = Uri.parse(POSTER_BASE_URL_MAIN_RATED).buildUpon()
-                        .appendQueryParameter(PARAM_KEY, KEY_VALUE)
-                        .build();
-                try {
-                    urlPosterOrdered = new URL(builtUri.toString());
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-            }
-            return urlPosterOrdered;
-        }
-
+        return builtStepUri;
+    }
 
     /**
      * This method returns the entire result from the HTTP response.

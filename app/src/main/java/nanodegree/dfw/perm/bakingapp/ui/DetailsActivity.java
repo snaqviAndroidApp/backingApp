@@ -1,51 +1,31 @@
 
 package nanodegree.dfw.perm.bakingapp.ui;
 
-import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import static android.widget.LinearLayout.VERTICAL;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.INGREDIENTS_List;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.NAME;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.STEPS_List;
-
-import java.text.MessageFormat;
-import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
-import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
-import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
-import nanodegree.dfw.perm.bakingapp.ui.frags.FragmentReceipesMain;
 import nanodegree.dfw.perm.bakingapp.ui.frags.FragmentRecipesDetails;
-import nanodegree.dfw.perm.bakingapp.ui.frags.tablet.TabletSetpDetails;
+import nanodegree.dfw.perm.bakingapp.ui.frags.tablet.StepClips;
 
 
 public class DetailsActivity extends AppCompatActivity implements FragmentRecipesDetails.OnFragmentInteractionListener {
+//        , StepsAdapter.StepsOnClickHandler {
 
-    WebView wtrailersView;
     private boolean isTwoPaneDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-
         determinePaneLayoutDetails();
+
         if(isTwoPaneDetails){
-
             FragmentManager fragDetails = getSupportFragmentManager();                        // Get FragmentManager
-            FragmentManager fragDetailsSec = getSupportFragmentManager();                     // Get FragmentManager-Tablet-Sec
-
             FragmentRecipesDetails fragmentDetailsTwoPane = new FragmentRecipesDetails();
             fragmentDetailsTwoPane.getTwoPaneValDetail(true);
             fragDetails.beginTransaction()
@@ -53,14 +33,11 @@ public class DetailsActivity extends AppCompatActivity implements FragmentRecipe
                     .commit();
 
             /**  Inflate the secondary_fragment in Tablet-firmWare **/
-//            FragmentRecipesDetails fragmentDetailsTwoPaneSec = new FragmentRecipesDetails();
-//            fragmentDetailsTwoPaneSec.getTwoPaneValDetail(true);
-
-            TabletSetpDetails tabletStepDetailsFrag = new TabletSetpDetails();
-//            fragDetailsSec.beginTransaction()
-////                    .add(R.id.frDetails_container_land_sec, fragmentDetailsTwoPaneSec)
-//                    .add(R.id.frDetails_container_land_sec, tabletStepDetailsFrag)          // attempting to inflate required Steps-Clips on Tablet
-//                    .commit();
+            StepClips tabletStepDetailsFrag = new StepClips();
+            fragmentDetailsTwoPane.getTwoPaneValDetail(true);
+            fragDetails.beginTransaction()
+                    .add(R.id.frDetails_container_land_sec, tabletStepDetailsFrag)          // inflating the right-Tablet (2nd) Fragment
+                    .commit();
             /**  Inflate the secondary_fragment in Tablet-firmWare ENDS **/
 
         }else {
@@ -70,7 +47,6 @@ public class DetailsActivity extends AppCompatActivity implements FragmentRecipe
                     .add(R.id.frDetails_container, fragmentDetailsTwoPane)
                     .commit();
         }
-
     }
 
     private void determinePaneLayoutDetails() {                    // checking for Second-Pane availability
@@ -85,33 +61,5 @@ public class DetailsActivity extends AppCompatActivity implements FragmentRecipe
     public void onFragmentInteraction(Uri uri) {
 
     }
-
-//    public void onTrailerItemClickListener(String trailerId, int adapterItem) {
-//        adapterItem++;
-//
-//        String frameVideo = "<html><body> Trailer no." + adapterItem + " <br><iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/" + trailerId + "\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
-//        WebSettings webSettings = wtrailersView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-//        wtrailersView.loadData(frameVideo, "text/html", "utf-8");
-//
-//
-//        Toast.makeText(this, "Inside Steps-recyvlerV", Toast.LENGTH_SHORT).show();
-//
-//
-//        Snackbar.make(getWindow().getDecorView().getRootView()
-//                    , MessageFormat.format("No Trailer Available", (Object) null)
-//                    , Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//
-//    }
-//
-//
-//    private class inWebView extends WebViewClient {
-//        @Override
-//        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//            view.loadUrl(strTrailer);
-//            return true;
-//        }
-//    }
-
 
 }
