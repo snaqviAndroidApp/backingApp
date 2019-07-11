@@ -81,6 +81,8 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 //import com.google.android.exoplayer2.ui.spherical.SphericalSurfaceView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.upstream.TransferListener;
 import com.google.android.exoplayer2.util.ErrorMessageProvider;
 import com.google.android.exoplayer2.util.Util;
 /** might need later ENDS **/
@@ -225,7 +227,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String sphericalStereoMode = getActivity().getIntent().getStringExtra(SPHERICAL_STEREO_MODE_EXTRA);
+//        String sphericalStereoMode = getActivity().getIntent().getStringExtra(SPHERICAL_STEREO_MODE_EXTRA);
 
         if (savedInstanceState != null) {
             mCurrentPosition = savedInstanceState.getInt(PLAYBACK_TIME);
@@ -234,7 +236,8 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
             playbackPosition = savedInstanceState.getLong(KEY_POSITION);
         }
 
-        rootTabStepsView = inflater.inflate(R.layout.fragment_tablet_setp_details, container, false);
+        rootTabStepsView = inflater.inflate(R.layout.fragment_tablet_setp_details, container, false);      // instance of Layout
+
         textViewTabSteps = rootTabStepsView.findViewById(R.id.tvTabStepDetails);
 
 
@@ -250,6 +253,11 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         progressBar = rootTabStepsView.findViewById(R.id.progress_bar);
         shouldAutoPlay = true;
         bandwidthMeter = new DefaultBandwidthMeter();
+        mediaDataSourceFactory = new DefaultDataSourceFactory(getActivity()
+                , Util.getUserAgent(getActivity().getBaseContext(),
+                "mediaPlayerSample")
+                , (TransferListener<? super DataSource>) bandwidthMeter);
+        window = new Timeline.Window();
 
         playerView.setControllerVisibilityListener(this);
 //        playerView.setErrorMessageProvider(new PlayerErrorMessageProvider());
@@ -283,11 +291,6 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
             trackSelectorParameters = new DefaultTrackSelector.ParametersBuilder().build();
             clearStartPosition();
         }
-
-
-
-
-
         /** ExoPlayer implementation attempt Ends **/
 
 
@@ -324,6 +327,22 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     }
 
 
+    @Override
+    public void onStart() {
+
+        if (Util.SDK_INT > 23) {
+            initializeExoPlayer();
+        }
+
+        super.onStart();
+
+        /**----------- **/
+//        initializePlayer();
+//        mVideoView.setMediaController(controller);
+        /**----------- **/
+
+
+    }
 
     private void clearStartPosition() {
         startAutoPlay = true;
@@ -339,20 +358,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-        /**----------- **/
-//        initializePlayer();
-//        mVideoView.setMediaController(controller);
-        /**----------- **/
-
-        if (Util.SDK_INT > 23) {
-            initializeExoPlayer();
-        }
-
-    }
 
     @Override
     public void onResume() {
@@ -371,9 +377,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity().getApplicationContext(), trackSelector);
 
         playerView.setPlayer(simpleExoPlayer);
-
         simpleExoPlayer.addListener(new PlayerEventListener());
-
         simpleExoPlayer.setPlayWhenReady(shouldAutoPlay);
 
         if(mParam1 != null) {
@@ -484,9 +488,15 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
+
+        updateStartPosition();
+//        outState.putInt(PLAYBACK_TIME, mVideoView.getCurrentPosition());
+
+        outState.putBoolean(KEY_PLAY_WHEN_READY, playWhenReady);
+        outState.putInt(KEY_WINDOW, currentWindow);
+        outState.putLong(KEY_POSITION, playbackPosition);
         super.onSaveInstanceState(outState);
 
-//        outState.putInt(PLAYBACK_TIME, mVideoView.getCurrentPosition());
     }
 
     @Override
@@ -499,11 +509,6 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
 
     }
 
-    private void updateStartPosition() {
-        playbackPosition = simpleExoPlayer.getCurrentPosition();
-        currentWindow = simpleExoPlayer.getCurrentWindowIndex();
-        playWhenReady = simpleExoPlayer.getPlayWhenReady();
-    }
 
     private void releaseExoPlayer() {
         if (simpleExoPlayer != null) {
@@ -513,6 +518,13 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
             simpleExoPlayer = null;
             trackSelector = null;
         }
+    }
+
+
+    private void updateStartPosition() {
+        playbackPosition = simpleExoPlayer.getCurrentPosition();
+        currentWindow = simpleExoPlayer.getCurrentWindowIndex();
+        playWhenReady = simpleExoPlayer.getPlayWhenReady();
     }
 
 //    private class PlayerErrorMessageProvider implements ErrorMessageProvider<ExoPlaybackException> {
