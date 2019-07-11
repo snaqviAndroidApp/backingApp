@@ -123,7 +123,8 @@ import static nanodegree.dfw.perm.bakingapp.utilities.NetworkUtils.buildStepsUrl
 //public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHandler {
 public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHandler
 //        , OnClickListener, PlaybackPreparer, PlayerControlView.VisibilityListener {
-        ,PlaybackPreparer, PlayerControlView.VisibilityListener {
+//        ,PlaybackPreparer, PlayerControlView.VisibilityListener
+{
 
     private static final String PLAYBACK_TIME = "play_time";
     private int mCurrentPosition = 0;
@@ -216,11 +217,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
             mParam2 = getArguments().getString(Strings.STEP_CLIP_TEXT);
             mParam3 = getArguments().getInt(Strings.STEP_INDEX);
         }
-        if (savedInstanceState == null) {
-            playWhenReady = true;
-            currentWindow = 0;
-            playbackPosition = 0;
-        }
+
     }
 
     @Override
@@ -229,12 +226,19 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
 
 //        String sphericalStereoMode = getActivity().getIntent().getStringExtra(SPHERICAL_STEREO_MODE_EXTRA);
 
-        if (savedInstanceState != null) {
+        if (savedInstanceState == null) {
+            playWhenReady = true;
+            currentWindow = 0;
+            playbackPosition = 0;
+        }else {
+
             mCurrentPosition = savedInstanceState.getInt(PLAYBACK_TIME);
             playWhenReady = savedInstanceState.getBoolean(KEY_PLAY_WHEN_READY);
             currentWindow = savedInstanceState.getInt(KEY_WINDOW);
             playbackPosition = savedInstanceState.getLong(KEY_POSITION);
         }
+
+
 
         rootTabStepsView = inflater.inflate(R.layout.fragment_tablet_setp_details, container, false);      // instance of Layout
 
@@ -259,7 +263,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
                 , (TransferListener<? super DataSource>) bandwidthMeter);
         window = new Timeline.Window();
 
-        playerView.setControllerVisibilityListener(this);
+//        playerView.setControllerVisibilityListener(getActivity());
 //        playerView.setErrorMessageProvider(new PlayerErrorMessageProvider());
         playerView.requestFocus();
 
@@ -374,7 +378,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
                 new AdaptiveTrackSelection.Factory(bandwidthMeter);
 
         trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
-        simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity().getApplicationContext(), trackSelector);
+        simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity().getBaseContext(), trackSelector);
 
         playerView.setPlayer(simpleExoPlayer);
         simpleExoPlayer.addListener(new PlayerEventListener());
@@ -495,19 +499,25 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         outState.putBoolean(KEY_PLAY_WHEN_READY, playWhenReady);
         outState.putInt(KEY_WINDOW, currentWindow);
         outState.putLong(KEY_POSITION, playbackPosition);
+
         super.onSaveInstanceState(outState);
-
     }
 
-    @Override
-    public void preparePlayback() {
-
+    private void updateStartPosition() {
+        playbackPosition = simpleExoPlayer.getCurrentPosition();
+        currentWindow = simpleExoPlayer.getCurrentWindowIndex();
+        playWhenReady = simpleExoPlayer.getPlayWhenReady();
     }
 
-    @Override
-    public void onVisibilityChange(int visibility) {
-
-    }
+//    @Override
+//    public void preparePlayback() {
+//
+//    }
+//
+//    @Override
+//    public void onVisibilityChange(int visibility) {
+//
+//    }
 
 
     private void releaseExoPlayer() {
@@ -521,11 +531,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     }
 
 
-    private void updateStartPosition() {
-        playbackPosition = simpleExoPlayer.getCurrentPosition();
-        currentWindow = simpleExoPlayer.getCurrentWindowIndex();
-        playWhenReady = simpleExoPlayer.getPlayWhenReady();
-    }
+
 
 //    private class PlayerErrorMessageProvider implements ErrorMessageProvider<ExoPlaybackException> {
 //
