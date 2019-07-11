@@ -19,6 +19,8 @@ android {
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
+//        targetCompatibility JavaVersion.VERSION_1_8
+
     }
 }
 
@@ -60,5 +62,19 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+
+
+//    compile 'com.google.android.exoplayer:exoplayer:2.8.0'    // 28 Errors like SimpleExoPlayer, TrackGroupArray
+//    compile 'com.google.android.exoplayer:exoplayer:2.8.0'    // gave three errors:
+//    implementation 'com.google.android.exoplayer:exoplayer:2.9.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.8.2'
+
+
+//    implementation 'com.google.android.exoplayer:exoplayer:2.7.2' // error: package com.google.android.exoplayer2.ui.spherical does not exist
+//    implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
+
+//    compile 'com.google.android.exoplayer:exoplayer:r2.2.0'     // originally used
+
+//    implementation 'com.danikula:videocache:2.7.1'
 
 }
