@@ -12,9 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.exoplayer2.ExoPlaybackException;
 
 import java.util.ArrayList;
 
@@ -125,7 +122,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         mIngredientsRecyclerView = rootDView.findViewById(R.id.recyclerVIngredients);       // Ingredients
         mIngredientsRecyclerView.setHasFixedSize(true);
 
-//        if(bTwoPaneFromAct_detail){
+//        if(bTwoPaneFromAct_detail){                                                       // Unnecessary conditionality
             ingredientsLayoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
             mIngredientsRecyclerView.setLayoutManager(ingredientsLayoutManager);
             mIngredientsRecyclerView.setHasFixedSize(true);
@@ -171,7 +168,6 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
                             + "\nMeasure: " + dINDetails.getMeasure() + "\n"
             );
         });
-
         _dStepsList = (ArrayList<Steps>) mIntent.getExtras().get(STEPS_List);
     }
 
@@ -229,8 +225,6 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         bStepsClips.putString(Strings.STEP_CLIP_INDEX, stepsInDetails.getVideoURL());
         bStepsClips.putInt(Strings.STEP_INDEX, adapterPos);
         bStepsClips.putString(STEP_CLIP_TEXT, stepsInDetails.getDescription());
-
-
         if (bTwoPaneFromAct_detail) {
             FragmentManager fragDetailsSelf = getActivity().getSupportFragmentManager();
             StepClips _insideFragDetails = new StepClips();

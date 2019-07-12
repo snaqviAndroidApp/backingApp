@@ -1,4 +1,4 @@
-#Fri Jul 12 06:28:14 CDT 2019
+#Fri Jul 12 06:45:49 CDT 2019
 base.0=/Users/azeemazem/dev/adb/nanodeg_/backingApp/app/buildout/intermediates/transforms/dexMerger/debug/4
 path.0=classes.dex
 renamed.0=classes.dex

@@ -25,7 +25,6 @@ import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
-
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
@@ -71,18 +70,13 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     private BandwidthMeter bandwidthMeter;
     private SimpleExoPlayer simpleExoPlayer;
     private DataSource.Factory mediaDataSourceFactory;
-
     private PlayerView playerView;
-
     private MediaSource mediaSource;
     private DefaultTrackSelector trackSelector;
-
     private boolean shouldAutoPlay;
     private boolean playWhenReady;
-
     private int currentWindow = 0;
     private long playbackPosition;
-
     private Timeline.Window window;
     private ProgressBar progressBar;
     private ImageView ivHideControllerButton;

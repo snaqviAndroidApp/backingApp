@@ -54,10 +54,8 @@ import static nanodegree.dfw.perm.bakingapp.data.Strings.STEPS_List;
  * create an instance of this fragment.
  */
 public class FragmentReceipesMain extends Fragment implements VersatileAdapter.OnRecipesClickListener {
-//public class FragmentReceipesMain extends Fragment  {
 
     View rootView;
-
     ArrayList<Ingredients> ingredientsIn;
     ArrayList<Steps> stepsIn;
     /** Code-related fields copied from MainActivity defined here **/
@@ -70,8 +68,6 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.O
     private long schPeriod;
     private int threadCounts;
     /** Code-related fields copied from MainActivity defined here **/
-
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -123,7 +119,6 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.O
 
         _initialize();
         rootView = inflater.inflate(R.layout.recipes_main_views, container, false);
-
         mLoadIndicator = rootView.findViewById(R.id.mv_loading_indicator);              // needs to put in respective in layout files place
         mRecyclerView = rootView.findViewById(R.id.recyclerview_recipes);
         if(!bTwoPaneFromAct){
@@ -200,8 +195,6 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.O
         void onFragmentInteraction(boolean uri);
     }
 
-
-    /** ------------> Ported from MainActivity-all <------------------- **/
     public void getRecipes(boolean connection) {
         if(connection){
             new FetchRecipes().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);           // Apparently no difference
@@ -301,10 +294,6 @@ public class FragmentReceipesMain extends Fragment implements VersatileAdapter.O
         }
     }
     /** Connection availability check ENDS **/
-
-
-
-    /** ------------> Ported from MainActivity-all ENDS <------------------- **/
 
 
 }
