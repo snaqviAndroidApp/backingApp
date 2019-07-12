@@ -14,7 +14,6 @@ import nanodegree.dfw.perm.bakingapp.ui.frags.tablet.StepClips;
 
 
 public class DetailsActivity extends AppCompatActivity implements FragmentRecipesDetails.OnFragmentInteractionListener {
-//        , StepsAdapter.StepsOnClickHandler {
 
     private boolean isTwoPaneDetails;
 
@@ -32,8 +31,8 @@ public class DetailsActivity extends AppCompatActivity implements FragmentRecipe
                     .add(R.id.frDetails_container_land_prime, fragmentDetailsTwoPane)
                     .commit();
 
-            /**  Inflate the secondary_fragment in Tablet-firmWare **/
-//            StepClips tabletStepDetailsFrag = new StepClips();                // issue with inflating the ExoPlayer layout in Tablet
+            /**  Inflate the secondary_fragment in Tablet-firmWare, here inflating causes Crash **/
+//            StepClips tabletStepDetailsFrag = new StepClips();
 //            fragmentDetailsTwoPane.getTwoPaneValDetail(true);
 //            fragDetails.beginTransaction()
 //                    .add(R.id.frDetails_container_land_sec, tabletStepDetailsFrag)          // inflating the right-Tablet (2nd) Fragment

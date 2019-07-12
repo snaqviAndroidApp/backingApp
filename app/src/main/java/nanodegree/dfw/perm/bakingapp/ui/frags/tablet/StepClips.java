@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 /** ExoPlayer: Un-Used imports **/
 
 import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.Timeline;
@@ -29,42 +26,19 @@ import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
 
-import com.google.android.exoplayer2.ui.DebugTextViewHelper;
-
-/** ExoPlayer: Un-Used imports ENDS **/
-
-
-
-/** ExoPlayer attempt imports **/
-
-/** might need later **/
-//import com.google.android.exoplayer2.source.ProgressiveMediaSource;           ProgresviewMediaSource didnt' find
-import com.google.android.exoplayer2.ExoPlaybackException;
-import com.google.android.exoplayer2.drm.FrameworkMediaDrm;
-import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer;
-import com.google.android.exoplayer2.mediacodec.MediaCodecUtil;
-
 import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.ads.AdsLoader;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
-
-//import com.google.android.exoplayer2.ui.spherical.SphericalSurfaceView;
-
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.TransferListener;
-import com.google.android.exoplayer2.util.ErrorMessageProvider;
 import com.google.android.exoplayer2.util.Util;
 /** might need later ENDS **/
 
 
-import com.google.android.exoplayer2.PlaybackPreparer;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.ui.PlayerControlView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
-import com.google.android.exoplayer2.source.TrackGroupArray;
 
 /** ExoPlayer attempt imports ENDS**/
 
@@ -84,11 +58,7 @@ import static nanodegree.dfw.perm.bakingapp.data.Strings.TAG_Exo;
  * Use the {@link StepClips#newInstance} factory method to
  * create an instance of this fragment.
  */
-//public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHandler {
-public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHandler
-//        , OnClickListener, PlaybackPreparer, PlayerControlView.VisibilityListener {
-//        ,PlaybackPreparer, PlayerControlView.VisibilityListener
-{
+public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHandler {
 
     private static final String PLAYBACK_TIME = "play_time";
     private int mCurrentPosition = 0;
@@ -96,45 +66,26 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     private View rootTabStepsView;
     private TextView textViewTabSteps;
 
-    private Uri videoUriVPlayer;
-
-//    private VideoView mVideoView;                   // Experimental
-//    private MediaController controller;
 
     /** Adding ExoPlayer **/
+    private BandwidthMeter bandwidthMeter;
     private SimpleExoPlayer simpleExoPlayer;
     private DataSource.Factory mediaDataSourceFactory;
-    private TrackGroupArray astSeenTrackGroupArray = null;
-    private DefaultBandwidthMeter defaultBandwidthMeter;
-    private BandwidthMeter bandwidthMeter;
 
     private PlayerView playerView;
 
-    private DataSource.Factory dataSourceFactory;
-    private FrameworkMediaDrm mediaDrm;
     private MediaSource mediaSource;
     private DefaultTrackSelector trackSelector;
-    private DefaultTrackSelector.Parameters trackSelectorParameters;
-    private DebugTextViewHelper debugViewHelper;
-    private TrackGroupArray lastSeenTrackGroupArray;
 
-    private boolean startAutoPlay;
     private boolean shouldAutoPlay;
     private boolean playWhenReady;
 
     private int currentWindow = 0;
-    private int startWindow;
-    private long startPosition;
     private long playbackPosition;
 
     private Timeline.Window window;
     private ProgressBar progressBar;
     private ImageView ivHideControllerButton;
-
-    // Fields used only for ad playback. The ads loader is loaded via reflection.
-
-    private AdsLoader adsLoader;
-    private Uri loadedAdTagUri;
 
     /** Adding ExoPlayer ENDS **/
 
@@ -181,7 +132,6 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
             mParam2 = getArguments().getString(Strings.STEP_CLIP_TEXT);
             mParam3 = getArguments().getInt(Strings.STEP_INDEX);
         }
-
     }
 
     @Override
@@ -214,19 +164,7 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
                 , Util.getUserAgent(getActivity().getBaseContext(),
                 "mediaPlayerSample")
                 , (TransferListener<? super DataSource>) bandwidthMeter);
-//
-//        window = new Timeline.Window();
-//        playerView.requestFocus();
 
-//        if (savedInstanceState != null) {
-//            trackSelectorParameters = savedInstanceState.getParcelable(KEY_TRACK_SELECTOR_PARAMETERS);
-//            startAutoPlay = savedInstanceState.getBoolean(KEY_AUTO_PLAY);
-//            startWindow = savedInstanceState.getInt(KEY_WINDOW);
-//            startPosition = savedInstanceState.getLong(KEY_POSITION);
-//        } else {
-//
-//            trackSelectorParameters = new DefaultTrackSelector.ParametersBuilder().build();
-//        }
         /** ExoPlayer implementation attempt Ends **/
         if(bStepClipIn){
             if(!mParam2.isEmpty()){
@@ -234,10 +172,8 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
             }else textViewTabSteps.setText("No steps details available");
 
             if(mParam1 != null) {
-                /**----------- **/
                 window = new Timeline.Window();
                 playerView.requestFocus();
-                /** ------------**/
             }else {
                 Snackbar.make(getActivity().findViewById(android.R.id.content)
                         , MessageFormat.format("No visuals available", (Object) null)
@@ -249,13 +185,11 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
 
     @Override
     public void onStart() {
-//        if (Util.SDK_INT > 23) {
+        if (Util.SDK_INT > 23) {
             initializeExoPlayer();
-//        }
+        }
         super.onStart();
     }
-
-
 
     @Override
     public void onResume() {
@@ -277,16 +211,12 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         playerView.setPlayer(simpleExoPlayer);
         simpleExoPlayer.addListener(new PlayerEventListener());
         simpleExoPlayer.setPlayWhenReady(shouldAutoPlay);
-
-//        if(!mParam1.isEmpty()) {                                                        // works here
-            mediaSource = new ExtractorMediaSource.Factory(mediaDataSourceFactory)
-                    .createMediaSource(Uri.parse(mParam1));
-
+        mediaSource = new ExtractorMediaSource.Factory(mediaDataSourceFactory)
+                .createMediaSource(Uri.parse(mParam1));
         boolean haveStartPosition = currentWindow != C.INDEX_UNSET;
         if (haveStartPosition) {
             simpleExoPlayer.seekTo(currentWindow, playbackPosition);
         }
-
         simpleExoPlayer.prepare(mediaSource, !haveStartPosition, false);
         ivHideControllerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -316,14 +246,10 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     @Override
     public void onStop() {
         super.onStop();
-//        releasePlayer();            // stop VideoPlayer
-
         if (Util.SDK_INT > 23) {
             releaseExoPlayer();
         }
-
     }
-
 
     public void setBundle(boolean b) {                          // Validates the inComing Bundle
         bStepClipIn = b;
@@ -333,10 +259,9 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-
-        if(!mParam1.isEmpty() && mParam1 != null)       // see if that helps in not crash in last config-change
+        if(!mParam1.isEmpty() && mParam1 != null) {
             updateStartPosition();
-
+        }
         outState.putBoolean(KEY_PLAY_WHEN_READY, playWhenReady);
         outState.putInt(KEY_WINDOW, currentWindow);
         outState.putLong(KEY_POSITION, playbackPosition);
@@ -351,11 +276,10 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     }
 
     private void releaseExoPlayer() {
-        if (simpleExoPlayer != null) {
 
-
+        if (simpleExoPlayer != null)
+        {
             updateStartPosition();
-
             shouldAutoPlay = simpleExoPlayer.getPlayWhenReady();
             simpleExoPlayer.release();
             simpleExoPlayer = null;
@@ -381,25 +305,6 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
                         break;
                 }
             }
-
     }
-
-//    @Override
-    public void onPlayerError(ExoPlaybackException error) {
-            switch (error.type) {
-                case ExoPlaybackException.TYPE_SOURCE:
-                    Log.e(TAG_Exo, "TYPE_SOURCE: " + error.getSourceException().getMessage());
-                    break;
-
-                case ExoPlaybackException.TYPE_RENDERER:
-                    Log.e(TAG_Exo, "TYPE_RENDERER: " + error.getRendererException().getMessage());
-                    break;
-
-                case ExoPlaybackException.TYPE_UNEXPECTED:
-                    Log.e(TAG_Exo, "TYPE_UNEXPECTED: " + error.getUnexpectedException().getMessage());
-                    break;
-            }
-        }
-
 
 }
