@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Pair;
+import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,39 +20,8 @@ import android.widget.Toast;
 
 /** ExoPlayer: Un-Used imports **/
 
-//import android.content.Intent;
-//import android.content.pm.PackageManager;
-//import android.net.Uri;
-//import android.os.Bundle;
-
-//import androidx.annotation.NonNull;                           AndroidX
-//import androidx.annotation.Nullable;                          AndroidX
-//import androidx.appcompat.app.AppCompatActivity;              AndroidX
-
-
 import com.google.android.exoplayer2.C;
-//import com.google.android.exoplayer2.C.ContentType;
-//import com.google.android.exoplayer2.ExoPlaybackException;
-//import com.google.android.exoplayer2.ExoPlayerFactory;
-//import com.google.android.exoplayer2.Player;
-//import com.google.android.exoplayer2.RenderersFactory;
-//import com.google.android.exoplayer2.drm.DefaultDrmSessionManager;
-//import com.google.android.exoplayer2.drm.FrameworkMediaCrypto;
-//import com.google.android.exoplayer2.drm.FrameworkMediaDrm;
-//import com.google.android.exoplayer2.drm.HttpMediaDrmCallback;
-//import com.google.android.exoplayer2.drm.UnsupportedDrmException;
-//import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer.DecoderInitializationException;
-//import com.google.android.exoplayer2.mediacodec.MediaCodecUtil.DecoderQueryException;
-//import com.google.android.exoplayer2.offline.DownloadHelper;
-//import com.google.android.exoplayer2.source.BehindLiveWindowException;
-//import com.google.android.exoplayer2.source.ConcatenatingMediaSource;
-//import com.google.android.exoplayer2.source.MediaSource;
-//import com.google.android.exoplayer2.source.ads.AdsLoader;
-//import com.google.android.exoplayer2.source.ads.AdsMediaSource;
-//import com.google.android.exoplayer2.source.dash.DashMediaSource;
-//import com.google.android.exoplayer2.source.hls.HlsMediaSource;
-//import com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource;
-
+import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.Timeline;
@@ -68,8 +38,7 @@ import com.google.android.exoplayer2.ui.DebugTextViewHelper;
 /** ExoPlayer attempt imports **/
 
 /** might need later **/
-
-//import com.google.android.exoplayer2.source.ProgressiveMediaSource;
+//import com.google.android.exoplayer2.source.ProgressiveMediaSource;           ProgresviewMediaSource didnt' find
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.drm.FrameworkMediaDrm;
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer;
@@ -79,7 +48,9 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ads.AdsLoader;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
+
 //import com.google.android.exoplayer2.ui.spherical.SphericalSurfaceView;
+
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.TransferListener;
@@ -102,17 +73,10 @@ import nanodegree.dfw.perm.bakingapp.R;
 import nanodegree.dfw.perm.bakingapp.data.Strings;
 import nanodegree.dfw.perm.bakingapp.ui.StepsAdapter;
 
-//import static nanodegree.dfw.perm.bakingapp.data.Strings.KEY_TRACK_SELECTOR_PARAMETERS;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.KEY_AUTO_PLAY;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.KEY_PLAY_WHEN_READY;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.KEY_POSITION;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.KEY_TRACK_SELECTOR_PARAMETERS;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.KEY_WINDOW;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.SPHERICAL_STEREO_MODE_EXTRA;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.SPHERICAL_STEREO_MODE_LEFT_RIGHT;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.SPHERICAL_STEREO_MODE_MONO;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.SPHERICAL_STEREO_MODE_TOP_BOTTOM;
-import static nanodegree.dfw.perm.bakingapp.utilities.NetworkUtils.buildStepsUrl;
+import static nanodegree.dfw.perm.bakingapp.data.Strings.TAG_Exo;
 
 
 /**
@@ -224,142 +188,71 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        String sphericalStereoMode = getActivity().getIntent().getStringExtra(SPHERICAL_STEREO_MODE_EXTRA);
-
         if (savedInstanceState == null) {
             playWhenReady = true;
             currentWindow = 0;
             playbackPosition = 0;
         }else {
-
             mCurrentPosition = savedInstanceState.getInt(PLAYBACK_TIME);
             playWhenReady = savedInstanceState.getBoolean(KEY_PLAY_WHEN_READY);
             currentWindow = savedInstanceState.getInt(KEY_WINDOW);
             playbackPosition = savedInstanceState.getLong(KEY_POSITION);
         }
 
-
-
         rootTabStepsView = inflater.inflate(R.layout.fragment_tablet_setp_details, container, false);      // instance of Layout
-
         textViewTabSteps = rootTabStepsView.findViewById(R.id.tvTabStepDetails);
-
-
-
-//        mVideoView = rootTabStepsView.findViewById(R.id.vvStepClip);
-
 
         /** ExoPlayer implementation attempt **/
         playerView = rootTabStepsView.findViewById(R.id.video_view);
-
         window = new Timeline.Window();
         ivHideControllerButton = rootTabStepsView.findViewById(R.id.exo_player_controller);
         progressBar = rootTabStepsView.findViewById(R.id.progress_bar);
         shouldAutoPlay = true;
         bandwidthMeter = new DefaultBandwidthMeter();
+
         mediaDataSourceFactory = new DefaultDataSourceFactory(getActivity()
                 , Util.getUserAgent(getActivity().getBaseContext(),
                 "mediaPlayerSample")
                 , (TransferListener<? super DataSource>) bandwidthMeter);
-        window = new Timeline.Window();
-
-//        playerView.setControllerVisibilityListener(getActivity());
-//        playerView.setErrorMessageProvider(new PlayerErrorMessageProvider());
-        playerView.requestFocus();
-
-//        if (sphericalStereoMode != null) {
-//            int stereoMode;
-//            if (SPHERICAL_STEREO_MODE_MONO.equals(sphericalStereoMode)) {
-//                stereoMode = C.STEREO_MODE_MONO;
-//            } else if (SPHERICAL_STEREO_MODE_TOP_BOTTOM.equals(sphericalStereoMode)) {
-//                stereoMode = C.STEREO_MODE_TOP_BOTTOM;
-//            } else if (SPHERICAL_STEREO_MODE_LEFT_RIGHT.equals(sphericalStereoMode)) {
-//                stereoMode = C.STEREO_MODE_LEFT_RIGHT;
-//            } else {
-//                showToast(R.string.error_unrecognized_stereo_mode);
 //
-////                finish();                 // original
-//                getActivity().finish();
-////                return;                   // original
-//                return null;                // experimental
-//            }
-//            ((SphericalSurfaceView) playerView.getVideoSurfaceView()).setDefaultStereoMode(stereoMode);
+//        window = new Timeline.Window();
+//        playerView.requestFocus();
+
+//        if (savedInstanceState != null) {
+//            trackSelectorParameters = savedInstanceState.getParcelable(KEY_TRACK_SELECTOR_PARAMETERS);
+//            startAutoPlay = savedInstanceState.getBoolean(KEY_AUTO_PLAY);
+//            startWindow = savedInstanceState.getInt(KEY_WINDOW);
+//            startPosition = savedInstanceState.getLong(KEY_POSITION);
+//        } else {
+//
+//            trackSelectorParameters = new DefaultTrackSelector.ParametersBuilder().build();
 //        }
-
-        if (savedInstanceState != null) {
-            trackSelectorParameters = savedInstanceState.getParcelable(KEY_TRACK_SELECTOR_PARAMETERS);
-            startAutoPlay = savedInstanceState.getBoolean(KEY_AUTO_PLAY);
-            startWindow = savedInstanceState.getInt(KEY_WINDOW);
-            startPosition = savedInstanceState.getLong(KEY_POSITION);
-        } else {
-            trackSelectorParameters = new DefaultTrackSelector.ParametersBuilder().build();
-            clearStartPosition();
-        }
         /** ExoPlayer implementation attempt Ends **/
-
-
         if(bStepClipIn){
             if(!mParam2.isEmpty()){
                 textViewTabSteps.setText(mParam2);
             }else textViewTabSteps.setText("No steps details available");
 
             if(mParam1 != null) {
-            }else if(!mParam1.isEmpty()){
-
-                /**-----------
-                 *
-                 * controller = new MediaController(getActivity().getApplicationContext());
-                 * controller.setMediaPlayer(mVideoView);
-                 * mVideoView.setMediaController(controller);
-                 *
-                 * ------------**/
-
-
-
-                /** Intent video works, however not embedded **/
-//            shouldOverrideUrlLoading(wTabView, mParam1);
-
+                /**----------- **/
+                window = new Timeline.Window();
+                playerView.requestFocus();
+                /** ------------**/
+            }else {
+                Snackbar.make(getActivity().findViewById(android.R.id.content)
+                        , MessageFormat.format("No visuals available", (Object) null)
+                        , Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
-
-
-        }else {
-            Snackbar.make(getActivity().findViewById(android.R.id.content)
-                    , MessageFormat.format("Ah, No Clips", (Object) null)
-                    , Snackbar.LENGTH_LONG).setAction("Action", null).show();
         }
         return rootTabStepsView;
     }
 
-
     @Override
     public void onStart() {
-
-        if (Util.SDK_INT > 23) {
+//        if (Util.SDK_INT > 23) {
             initializeExoPlayer();
-        }
-
+//        }
         super.onStart();
-
-        /**----------- **/
-//        initializePlayer();
-//        mVideoView.setMediaController(controller);
-        /**----------- **/
-
-
-    }
-
-    private void clearStartPosition() {
-        startAutoPlay = true;
-        startWindow = C.INDEX_UNSET;
-        startPosition = C.TIME_UNSET;
-    }
-
-    private void showToast(int messageId) {
-        showToast(getString(messageId));
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
 
@@ -377,19 +270,17 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         TrackSelection.Factory videoTrackSelectionFactory =
                 new AdaptiveTrackSelection.Factory(bandwidthMeter);
 
-        trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
+        if(!mParam1.isEmpty() && mParam1 != null) {
+            trackSelector = new DefaultTrackSelector(videoTrackSelectionFactory);
         simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(getActivity().getBaseContext(), trackSelector);
 
         playerView.setPlayer(simpleExoPlayer);
         simpleExoPlayer.addListener(new PlayerEventListener());
         simpleExoPlayer.setPlayWhenReady(shouldAutoPlay);
 
-        if(mParam1 != null) {
-//            videoUriVPlayer = buildStepsUrl(mParam1);
+//        if(!mParam1.isEmpty()) {                                                        // works here
             mediaSource = new ExtractorMediaSource.Factory(mediaDataSourceFactory)
-//                    .createMediaSource(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
                     .createMediaSource(Uri.parse(mParam1));
-        }
 
         boolean haveStartPosition = currentWindow != C.INDEX_UNSET;
         if (haveStartPosition) {
@@ -397,71 +288,25 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         }
 
         simpleExoPlayer.prepare(mediaSource, !haveStartPosition, false);
-
         ivHideControllerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playerView.hideController();
             }
         });
+
+        }else {
+            progressBar.setVisibility(View.INVISIBLE);
+            Snackbar.make(getActivity().findViewById(android.R.id.content)
+                    , MessageFormat.format("No visual aid available", (Object) null)
+                    , Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        }
+
     }
-
-
-//    private void initializePlayer() {
-//
-//        // Show the "Buffering..." message while the video loads.
-////        mBufferingTextView.setVisibility(VideoView.VISIBLE);
-//
-//        if(mParam1 != null){
-//            videoUriVPlayer = buildStepsUrl(mParam1);
-//
-//            mVideoView.setVideoURI(videoUriVPlayer);
-//            mVideoView.setOnPreparedListener(
-//                    new MediaPlayer.OnPreparedListener() {
-//                        @Override
-//                        public void onPrepared(MediaPlayer mediaPlayer) {
-//                            // Hide buffering message.
-////                            mBufferingTextView.setVisibility(VideoView.INVISIBLE);
-//                             // Implementation here.
-//                            if (mCurrentPosition > 0) {
-//                                mVideoView.seekTo(mCurrentPosition);
-//                            } else {
-//                                // Skipping to 1 shows the first frame of the video.
-//                                mVideoView.seekTo(1);
-//                            }
-//                            mVideoView.start();
-//                        }
-//
-//                    });
-//
-//                    // Listener for onCompletion() event (runs after media has finished  playing).
-//                    mVideoView.setOnCompletionListener(
-//                    new MediaPlayer.OnCompletionListener() {
-//                        @Override
-//                        public void onCompletion(MediaPlayer mediaPlayer) {
-//                            Toast.makeText(getActivity().getApplicationContext(),
-//                                    R.string.toast_message_videoPlayer,
-//                                    Toast.LENGTH_SHORT).show();
-//
-//                            // Return the video position to the start.
-//                            mVideoView.seekTo(0);
-//                        }
-//                    });
-//
-//
-//        }
-//        else {
-////            mVideoView.setOnErrorListener(null);
-//        }
-//    }
 
     @Override
     public void onPause() {
         super.onPause();
-
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-//            mVideoView.pause();
-//        }
 
         if (Util.SDK_INT <= 23) {
             releaseExoPlayer();
@@ -479,10 +324,6 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
 
     }
 
-//    private void release_Player() {
-//        mVideoView.stopPlayback();
-//    }
-
 
     public void setBundle(boolean b) {                          // Validates the inComing Bundle
         bStepClipIn = b;
@@ -493,8 +334,8 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
 
-        updateStartPosition();
-//        outState.putInt(PLAYBACK_TIME, mVideoView.getCurrentPosition());
+        if(!mParam1.isEmpty() && mParam1 != null)       // see if that helps in not crash in last config-change
+            updateStartPosition();
 
         outState.putBoolean(KEY_PLAY_WHEN_READY, playWhenReady);
         outState.putInt(KEY_WINDOW, currentWindow);
@@ -509,65 +350,18 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
         playWhenReady = simpleExoPlayer.getPlayWhenReady();
     }
 
-//    @Override
-//    public void preparePlayback() {
-//
-//    }
-//
-//    @Override
-//    public void onVisibilityChange(int visibility) {
-//
-//    }
-
-
     private void releaseExoPlayer() {
         if (simpleExoPlayer != null) {
+
+
             updateStartPosition();
+
             shouldAutoPlay = simpleExoPlayer.getPlayWhenReady();
             simpleExoPlayer.release();
             simpleExoPlayer = null;
             trackSelector = null;
         }
     }
-
-
-
-
-//    private class PlayerErrorMessageProvider implements ErrorMessageProvider<ExoPlaybackException> {
-//
-//        @Override
-//        public Pair<Integer, String> getErrorMessage(ExoPlaybackException e) {
-//            String errorString = getString(R.string.error_generic);
-//            if (e.type == ExoPlaybackException.TYPE_RENDERER) {
-//                Exception cause = e.getRendererException();
-//                if (cause instanceof MediaCodecRenderer.DecoderInitializationException) {
-//                    // Special case for decoder initialization failures.
-//                    MediaCodecRenderer.DecoderInitializationException decoderInitializationException =
-//                            (MediaCodecRenderer.DecoderInitializationException) cause;
-//                    if (decoderInitializationException.decoderName == null) {
-//                        if (decoderInitializationException.getCause() instanceof MediaCodecUtil.DecoderQueryException) {
-//                            errorString = getString(R.string.error_querying_decoders);
-//                        } else if (decoderInitializationException.secureDecoderRequired) {
-//                            errorString =
-//                                    getString(
-//                                            R.string.error_no_secure_decoder, decoderInitializationException.mimeType);
-//                        } else {
-//                            errorString =
-//                                    getString(R.string.error_no_decoder, decoderInitializationException.mimeType);
-//                        }
-//                    } else {
-//                        errorString =
-//                                getString(
-//                                        R.string.error_instantiating_decoder,
-//                                        decoderInitializationException.decoderName);
-//                    }
-//                }
-//
-//            }
-//            return null;
-//        }
-//
-//    }
 
     private class PlayerEventListener extends Player.DefaultEventListener {
             @Override
@@ -589,4 +383,23 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
             }
 
     }
+
+//    @Override
+    public void onPlayerError(ExoPlaybackException error) {
+            switch (error.type) {
+                case ExoPlaybackException.TYPE_SOURCE:
+                    Log.e(TAG_Exo, "TYPE_SOURCE: " + error.getSourceException().getMessage());
+                    break;
+
+                case ExoPlaybackException.TYPE_RENDERER:
+                    Log.e(TAG_Exo, "TYPE_RENDERER: " + error.getRendererException().getMessage());
+                    break;
+
+                case ExoPlaybackException.TYPE_UNEXPECTED:
+                    Log.e(TAG_Exo, "TYPE_UNEXPECTED: " + error.getUnexpectedException().getMessage());
+                    break;
+            }
+        }
+
+
 }

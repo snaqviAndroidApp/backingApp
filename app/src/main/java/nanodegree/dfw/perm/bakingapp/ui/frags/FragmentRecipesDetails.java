@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.exoplayer2.ExoPlaybackException;
 
 import java.util.ArrayList;
 
@@ -226,6 +229,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         bStepsClips.putString(Strings.STEP_CLIP_INDEX, stepsInDetails.getVideoURL());
         bStepsClips.putInt(Strings.STEP_INDEX, adapterPos);
         bStepsClips.putString(STEP_CLIP_TEXT, stepsInDetails.getDescription());
+
 
         if (bTwoPaneFromAct_detail) {
             FragmentManager fragDetailsSelf = getActivity().getSupportFragmentManager();

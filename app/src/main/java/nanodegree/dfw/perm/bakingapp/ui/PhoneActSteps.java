@@ -24,22 +24,26 @@ public class PhoneActSteps extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_act_steps);
 
-        Bundle bundleIn = getIntent().getExtras();
-        Bundle extBundle = InitInfo(bundleIn);
+        if(savedInstanceState == null) {
 
-        fragPhoneClips = new StepClips();
-        fragPhoneClips.setArguments(extBundle);
-        fragPhoneClips.setBundle(true);
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                fragmentTransaction
-                        .add(R.id.frDetails_container_phPortrait, fragPhoneClips)
-                        .commit();
-            }
-        });
+            Bundle bundleIn = getIntent().getExtras();
+            Bundle extBundle = InitInfo(bundleIn);
 
+            fragPhoneClips = new StepClips();
+            fragPhoneClips.setArguments(extBundle);
+            fragPhoneClips.setBundle(true);
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    fragmentTransaction
+                            .add(R.id.frDetails_container_phPortrait, fragPhoneClips)
+                            .commit();
+                }
+            });
+
+        }
+        // else {}
     }
 
     @Override
@@ -61,6 +65,6 @@ public class PhoneActSteps extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        fragPhoneClips.onPause();
+//        fragPhoneClips.onPause();         // causing crash on rotating phone while playing ExoPlayer
     }
 }

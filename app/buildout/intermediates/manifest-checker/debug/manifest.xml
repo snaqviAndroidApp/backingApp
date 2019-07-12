@@ -24,19 +24,15 @@
         android:testOnly="true"
         android:theme="@style/Theme.MaterialComponents.Light.Bridge" >
         <activity
-            android:name="nanodegree.dfw.perm.bakingapp.data.handler.baking.ClipsPlay"
-            android:configChanges="orientation|screenSize|layoutDirection" >
-        </activity>
-        <activity
             android:name="nanodegree.dfw.perm.bakingapp.ui.PhoneActSteps"
             android:label="Recipe Elaborated" />
         <activity
             android:name="nanodegree.dfw.perm.bakingapp.ui.DetailsActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"
             android:label="@string/title_activity_detail"
             android:parentActivityName="nanodegree.dfw.perm.bakingapp.app.MainActivity" />
         <activity
             android:name="nanodegree.dfw.perm.bakingapp.app.MainActivity"
-            android:configChanges="orientation|screenSize|layoutDirection"
             android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

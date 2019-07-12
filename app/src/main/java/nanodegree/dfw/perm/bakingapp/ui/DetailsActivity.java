@@ -33,11 +33,11 @@ public class DetailsActivity extends AppCompatActivity implements FragmentRecipe
                     .commit();
 
             /**  Inflate the secondary_fragment in Tablet-firmWare **/
-            StepClips tabletStepDetailsFrag = new StepClips();
-            fragmentDetailsTwoPane.getTwoPaneValDetail(true);
-            fragDetails.beginTransaction()
-                    .add(R.id.frDetails_container_land_sec, tabletStepDetailsFrag)          // inflating the right-Tablet (2nd) Fragment
-                    .commit();
+//            StepClips tabletStepDetailsFrag = new StepClips();                // issue with inflating the ExoPlayer layout in Tablet
+//            fragmentDetailsTwoPane.getTwoPaneValDetail(true);
+//            fragDetails.beginTransaction()
+//                    .add(R.id.frDetails_container_land_sec, tabletStepDetailsFrag)          // inflating the right-Tablet (2nd) Fragment
+//                    .commit();
             /**  Inflate the secondary_fragment in Tablet-firmWare ENDS **/
 
         }else {

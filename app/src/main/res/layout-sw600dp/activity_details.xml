@@ -28,9 +28,15 @@
         android:id="@+id/frDetails_container_land_sec"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/ic_clips"
         android:layout_weight="1"
         android:padding="4dp"
         tools:ignore="WebViewLayout">
+
+        <!--<fragment-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--/>-->
 
     </FrameLayout>
 

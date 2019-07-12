@@ -55,6 +55,6 @@ public class Strings {
         DEFAULT_COOKIE_MANAGER = new CookieManager();
         DEFAULT_COOKIE_MANAGER.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
     }
-
+    public static final String TAG_Exo = "exoPlayer_E";
     /** ExoPlayer strings ENDS**/
 }
