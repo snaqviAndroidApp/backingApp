@@ -1,0 +1,11 @@
+#Internal package file, do not edit.
+#Sat Jul 13 23:24:58 CDT 2019
+1.base=/Users/azeemazem/dev/adb/nanodeg_/backingApp/app/buildout/intermediates/transforms/dexMerger/androidTest/debug/1
+0.baseType=DIRECTORY
+1.baseType=DIRECTORY
+count=2
+1.set=DEX
+0.path=classes.dex
+0.set=DEX
+0.base=/Users/azeemazem/dev/adb/nanodeg_/backingApp/app/buildout/intermediates/transforms/dexMerger/androidTest/debug/0
+1.path=classes.dex
