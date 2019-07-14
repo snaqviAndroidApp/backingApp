@@ -32,8 +32,7 @@ public class RecipesWidget extends AppWidgetProvider {
 //    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager
 //            , int appWidgetId) {
 //
-    static void updateAppWidget
-    (Context context, AppWidgetManager appWidgetManager
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager
             , int appWidgetId, String recipeName) {
 
 //        CharSequence widgetText = context.getString(R.string.appwidget_text);
@@ -53,15 +52,29 @@ public class RecipesWidget extends AppWidgetProvider {
 
         /** Clips PendingIntent getting BroadCastReceiver **/
 
-//        Intent recipeWIntent = new Intent(context, DetailsActivity.class);
-        Intent recipeWIntent = new Intent(context, MainActivity.class);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipes_widget);
 
 
+        /** to check if mainAct triggers **/
+        Intent mainIntent = new Intent(context, MainActivity.class);
+        mainIntent.addCategory(Intent.ACTION_MAIN);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent mainPendingIntent = PendingIntent.getActivity(context, 0, mainIntent, 0);
+        /** to check if mainAct triggers ENDS **/
+
+
+
+        views.setOnClickPendingIntent(R.id.gv_parent_for_widget, mainPendingIntent);
+
+
+
+
+        Intent recipeWIntent = new Intent(context, DetailsActivity.class);
         PendingIntent pendingIntentRecipe = PendingIntent.getBroadcast(context
                 , 0
                 ,recipeWIntent
                 , PendingIntent.FLAG_UPDATE_CURRENT);
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipes_widget);
 
         Timber.w("provider somehow got the received recipeId %s", recipeName);
 
@@ -80,9 +93,13 @@ public class RecipesWidget extends AppWidgetProvider {
 
     private static void manualUpdateRecipeWidgets(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds
             , String passedInName) {
+
+//
+//
+//
+//
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId, passedInName);
-
         }
     }
 
@@ -114,7 +131,7 @@ public class RecipesWidget extends AppWidgetProvider {
         int[] ids = manager.getAppWidgetIds(new ComponentName(context, RecipesWidget.class));
 
         String action = intent.getAction();
-        if (action.equals("action.widget.receives.ingredients")) {
+        if (action.equals("android.appwidget.action.APPWIDGET_UPDATE")) {
             ingredientsList = Parcels.unwrap(intent.getParcelableExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY));
             recipeName = intent.getStringExtra("name");
             Timber.w("onReceive in Provider received recipe name as %s", intent.getStringExtra("name"));

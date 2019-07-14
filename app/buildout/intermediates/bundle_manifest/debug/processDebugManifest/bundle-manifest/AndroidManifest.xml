@@ -28,7 +28,7 @@
 
         <receiver android:name="nanodegree.dfw.perm.bakingapp.utilities.widget.RecipesWidget" >
             <intent-filter>
-                <action android:name="action.widget.receives.ingredients" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data

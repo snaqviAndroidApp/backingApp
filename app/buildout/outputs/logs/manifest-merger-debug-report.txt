@@ -131,12 +131,12 @@ receiver#nanodegree.dfw.perm.bakingapp.utilities.widget.RecipesWidget
 ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:22:9-30:20
 	android:name
 		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:22:19-65
-intent-filter#action:name:action.widget.receives.ingredients
+intent-filter#action:name:android.appwidget.action.APPWIDGET_UPDATE
 ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:23:13-25:29
-action#action.widget.receives.ingredients
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:24:17-77
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:24:17-84
 	android:name
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:24:25-74
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:24:25-81
 meta-data#android.appwidget.provider
 ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:27:13-29:63
 	android:resource

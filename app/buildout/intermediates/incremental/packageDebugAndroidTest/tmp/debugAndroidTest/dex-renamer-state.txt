@@ -1,7 +1,0 @@
-#Sat Jul 13 23:24:57 CDT 2019
-base.0=/Users/azeemazem/dev/adb/nanodeg_/backingApp/app/buildout/intermediates/transforms/dexMerger/androidTest/debug/0
-path.1=classes.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=/Users/azeemazem/dev/adb/nanodeg_/backingApp/app/buildout/intermediates/transforms/dexMerger/androidTest/debug/1
