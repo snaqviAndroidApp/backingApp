@@ -23,6 +23,19 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MaterialComponents.Light.Bridge" >
+        <service android:name="nanodegree.dfw.perm.bakingapp.data.background.WidgetIngService" />
+        <service android:name="nanodegree.dfw.perm.bakingapp.data.background.WidgetGridRemoteViewService" />
+
+        <receiver android:name="nanodegree.dfw.perm.bakingapp.utilities.widget.RecipesWidget" >
+            <intent-filter>
+                <action android:name="action.widget.receives.ingredients" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/recipes_widget_info" />
+        </receiver>
+
         <activity
             android:name="nanodegree.dfw.perm.bakingapp.ui.PhoneActSteps"
             android:label="Recipe Elaborated" />
@@ -49,10 +62,6 @@
             android:name="com.squareup.picasso.PicassoProvider"
             android:authorities="nanodegree.dfw.perm.bakingapp.com.squareup.picasso"
             android:exported="false" />
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="nanodegree.dfw.perm.bakingapp.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
     </application>
 
 </manifest>

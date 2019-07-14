@@ -1,6 +1,8 @@
 package nanodegree.dfw.perm.bakingapp.ui.frags.tablet;
 
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -80,9 +82,15 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     private Timeline.Window window;
     private ProgressBar progressBar;
     private ImageView ivHideControllerButton;
-
     /** Adding ExoPlayer ENDS **/
 
+
+    /** Widgetizing **/
+
+    private Context contextClips;
+
+
+     /** Widgetizing ENDS **/
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -131,6 +139,10 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+//        Resources resClips = contextClips.getResources(); // wrong approach, needs getActivity.getResources()
+        Resources resClips = getActivity().getResources();
+
 
         if (savedInstanceState == null) {
             playWhenReady = true;

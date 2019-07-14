@@ -538,6 +538,7 @@
     <dimen name="tvTitle_TextSize">20sp</dimen>
     <dimen name="tvTitle_TextSize_land">14sp</dimen>
     <dimen name="tv_padding">5dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
     <drawable name="exo_controls_fastforward">@drawable/exo_icon_fastforward</drawable>
     <drawable name="exo_controls_next">@drawable/exo_icon_next</drawable>
     <drawable name="exo_controls_pause">@drawable/exo_icon_pause</drawable>
@@ -625,6 +626,7 @@
     <integer name="mtrl_tab_indicator_anim_duration_ms">250</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="IngredientWString">Ingredients</string>
     <string name="IngredientsString">Ingredients:</string>
     <string name="StepsString">Steps:</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
@@ -666,8 +668,10 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="add_widget">Add widget</string>
     <string name="app_name">Baking Resource</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appwidget_text">EXAMPLE</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="buffering_string">Buffering…</string>
     <string name="character_counter_content_description">Character limit exceeded %1$d of %2$d</string>
@@ -736,6 +740,7 @@
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="popularityHint">popularity</string>
+    <string name="quantity">quantity</string>
     <string name="releaseData_Prepending"> </string>
     <string name="release_date">Released</string>
     <string name="release_dateHint">release Date</string>
@@ -746,6 +751,7 @@
     <string name="reviewsString">REVIEWS</string>
     <string name="reviews_detail">reviews</string>
     <string name="search_menu_title">Search</string>
+    <string name="see_there">there</string>
     <string name="sort_by_popularity">Sort by popularity</string>
     <string name="sort_by_rate">Sort by rating</string>
     <string name="status_bar_notification_info_overflow">999+</string>

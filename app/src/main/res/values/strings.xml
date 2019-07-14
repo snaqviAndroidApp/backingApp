@@ -70,7 +70,11 @@
     <string name="error_unsupported_audio">Media includes audio tracks, but none are playable by this device</string>
 
     <string name="track_selection_title"> Select tracks</string>
-
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="IngredientWString">Ingredients</string>
+    <string name="quantity">quantity</string>
+    <string name="see_there">there</string>
 
 
 </resources>

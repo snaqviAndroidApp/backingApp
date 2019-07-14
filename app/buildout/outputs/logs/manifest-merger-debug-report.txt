@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
 MERGED from [io.reactivex.rxjava2:rxandroid:2.1.1] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/12136329acf2798081fc646554364346/AndroidManifest.xml:15:1-20:12
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/fc8fa15979c17c450bd07ba57e7f8132/AndroidManifest.xml:2:1-14:12
 MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/49d51f56810d6426e82434ce0eedb119/AndroidManifest.xml:2:1-12:12
@@ -15,6 +15,7 @@ MERGED from [com.android.support:support-v4:28.0.0] /Users/azeemazem/.gradle/cac
 MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/c3bdb62721cd68b7de08c5ee59597092/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/60b6893012ac97cd15bca63aba08669f/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.exoplayer:exoplayer:2.8.2] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/938a36bb26ebe1d37fb0111643f79db0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/a5ccdb01a4b7067985ae551e783c9718/AndroidManifest.xml:2:1-9:12
 MERGED from [com.android.support:exifinterface:27.1.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/c741e9bc9271400b06da9fb54afd8eb3/AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/0402da7207267d822addf34a52e98759/AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-fragment:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/5faa46ef36e8f0ad491e4d8026048220/AndroidManifest.xml:17:1-22:12
@@ -51,20 +52,20 @@ MERGED from [com.android.support:documentfile:28.0.0] /Users/azeemazem/.gradle/c
 MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/2f291fbda60ba81fb6612064ad836c44/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:print:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/1e8bdea6c4fd38c437714450d88664e0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:interpolator:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/1ee18de05e028d2f35c2fb6f9aa58bef/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
+INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
+INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
 	package
 		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:3:5-44
 		INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
 		INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-44:12
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:1-56:12
 		INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:2:11-69
@@ -87,7 +88,7 @@ ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidMani
 	android:name
 		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:8:22-77
 application
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:10:5-42:19
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:11:5-54:19
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/fc8fa15979c17c450bd07ba57e7f8132/AndroidManifest.xml:7:5-12:19
 MERGED from [com.squareup.picasso:picasso:2.71828] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/fc8fa15979c17c450bd07ba57e7f8132/AndroidManifest.xml:7:5-12:19
 MERGED from [com.github.bumptech.glide:glide:4.9.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/49d51f56810d6426e82434ce0eedb119/AndroidManifest.xml:10:5-20
@@ -96,6 +97,8 @@ MERGED from [com.android.support:design:28.0.0] /Users/azeemazem/.gradle/caches/
 MERGED from [com.android.support:design:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/08e6f8f2750494b0ab0d038920586a1a/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/0a6374c10da39b0ddf9d0339f613b799/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/0a6374c10da39b0ddf9d0339f613b799/AndroidManifest.xml:9:5-20
+MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/a5ccdb01a4b7067985ae551e783c9718/AndroidManifest.xml:7:5-20
+MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/a5ccdb01a4b7067985ae551e783c9718/AndroidManifest.xml:7:5-20
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/0402da7207267d822addf34a52e98759/AndroidManifest.xml:9:5-20
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/0402da7207267d822addf34a52e98759/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:support-compat:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/c42dae8707966098c261df65b1bac990/AndroidManifest.xml:22:5-94
@@ -105,55 +108,79 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/azeemazem/.g
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/c42dae8707966098c261df65b1bac990/AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:15:9-35
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:14:9-41
 	android:roundIcon
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:14:9-54
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:15:9-54
 	android:icon
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:12:9-47
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:13:9-47
 	android:allowBackup
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:12:9-35
 	android:theme
 		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:17:9-69
-activity#nanodegree.dfw.perm.bakingapp.ui.PhoneActSteps
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:18:9-20:58
-	android:label
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:20:13-46
+service#nanodegree.dfw.perm.bakingapp.data.background.WidgetIngService
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:19:9-69
 	android:name
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:19:13-45
-activity#nanodegree.dfw.perm.bakingapp.ui.DetailsActivity
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:21:9-25:71
-	android:parentActivityName
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:25:13-59
-	android:label
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:23:13-58
-	android:configChanges
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:24:13-75
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:19:18-66
+service#nanodegree.dfw.perm.bakingapp.data.background.WidgetGridRemoteViewService
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:20:9-21:75
 	android:name
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:22:13-47
-activity#nanodegree.dfw.perm.bakingapp.app.MainActivity
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:26:9-37:20
-	android:launchMode
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:31:13-43
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:21:13-72
+receiver#nanodegree.dfw.perm.bakingapp.utilities.widget.RecipesWidget
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:23:9-31:20
 	android:name
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:27:13-45
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:32:13-36:29
-action#android.intent.action.MAIN
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:33:17-69
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:23:19-65
+intent-filter#action:name:action.widget.receives.ingredients
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:24:13-26:29
+action#action.widget.receives.ingredients
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:33:25-66
-category#android.intent.category.LAUNCHER
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:35:17-77
-	android:name
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:35:27-74
-meta-data#preloaded_fonts
-ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:39:9-41:57
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:25:25-74
+meta-data#android.appwidget.provider
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:28:13-30:63
 	android:resource
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:41:13-54
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:30:17-60
 	android:name
-		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:40:13-43
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:29:17-58
+activity#nanodegree.dfw.perm.bakingapp.ui.PhoneActSteps
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:33:9-35:49
+	android:label
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:35:13-46
+	android:name
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:34:13-45
+activity#nanodegree.dfw.perm.bakingapp.ui.DetailsActivity
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:36:9-40:62
+	android:parentActivityName
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:40:13-59
+	android:label
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:39:13-58
+	android:configChanges
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:38:13-75
+	android:name
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:37:13-47
+activity#nanodegree.dfw.perm.bakingapp.app.MainActivity
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:41:9-49:20
+	android:launchMode
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:43:13-43
+	android:name
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:42:13-45
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:44:13-48:29
+action#android.intent.action.MAIN
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:45:17-69
+	android:name
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:45:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:47:17-77
+	android:name
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:47:27-74
+meta-data#preloaded_fonts
+ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:51:9-53:57
+	android:resource
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:53:13-54
+	android:name
+		ADDED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml:52:13-43
 uses-sdk
 INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/azeemazem/dev/adb/nanodeg_/backingApp/app/src/main/AndroidManifest.xml
@@ -180,6 +207,8 @@ MERGED from [com.android.support:cardview-v7:28.0.0] /Users/azeemazem/.gradle/ca
 MERGED from [com.android.support:cardview-v7:28.0.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/60b6893012ac97cd15bca63aba08669f/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.exoplayer:exoplayer:2.8.2] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/938a36bb26ebe1d37fb0111643f79db0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer:2.8.2] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/938a36bb26ebe1d37fb0111643f79db0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/a5ccdb01a4b7067985ae551e783c9718/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/a5ccdb01a4b7067985ae551e783c9718/AndroidManifest.xml:5:5-43
 MERGED from [com.android.support:exifinterface:27.1.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/c741e9bc9271400b06da9fb54afd8eb3/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:exifinterface:27.1.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/c741e9bc9271400b06da9fb54afd8eb3/AndroidManifest.xml:20:5-44
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] /Users/azeemazem/.gradle/caches/transforms-2/files-2.1/0402da7207267d822addf34a52e98759/AndroidManifest.xml:5:5-7:41

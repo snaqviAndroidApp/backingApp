@@ -57,4 +57,11 @@ public class Strings {
     }
     public static final String TAG_Exo = "exoPlayer_E";
     /** ExoPlayer strings ENDS**/
+
+/** Widgets' **/
+// public static final String INGREDIENT_LIST_FROM_DETAIL_ACTIVITY = "INGREDIENT_LIST_FROM_DETAIL_ACTIVITY";
+
+/** Widgets' ENDS **/
+
+
 }

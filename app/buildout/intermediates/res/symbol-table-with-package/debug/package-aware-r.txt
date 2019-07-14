@@ -970,6 +970,7 @@ dimen tvIngredients_TextSize
 dimen tvTitle_TextSize
 dimen tvTitle_TextSize_land
 dimen tv_padding
+dimen widget_margin
 drawable abc_ab_share_pack_mtrl_alpha
 drawable abc_action_bar_item_background_material
 drawable abc_btn_borderless_material
@@ -1065,6 +1066,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable details
 drawable details2
+drawable example_appwidget_preview
 drawable exo_controls_fastforward
 drawable exo_controls_fullscreen_enter
 drawable exo_controls_fullscreen_exit
@@ -1096,6 +1098,7 @@ drawable exo_notification_stop
 drawable ic_action_icon
 drawable ic_btn_24dp
 drawable ic_clips
+drawable ic_clips_launch_
 drawable ic_download_icon
 drawable ic_favorite_border_black_24dp
 drawable ic_favorite_full_24dp
@@ -1243,6 +1246,7 @@ id glide_custom_view_target_tag
 id gone
 id group_divider
 id groups
+id gv_parent_for_widget
 id home
 id homeAsUp
 id icon
@@ -1378,6 +1382,10 @@ id tvOriginalTitle
 id tvRecipes
 id tvTabStepDetails
 id tv_IngDetails
+id tv_widget_ingredient
+id tv_widget_measure
+id tv_widget_qty
+id tv_widget_recipe_name
 id uniform
 id unlabeled
 id up
@@ -1385,6 +1393,7 @@ id useLogo
 id video_view
 id view_offset_helper
 id visible
+id widget_clips_image
 id withText
 id wrap
 id wrap_content
@@ -1482,7 +1491,9 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout recipe_widget_list_item
 layout recipes_main_views
+layout recipes_widget
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1490,11 +1501,13 @@ layout support_simple_spinner_dropdown_item
 menu details_menu
 menu main_menu
 mipmap ic_clips
+mipmap ic_clips_launch
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap ic_slides
 mipmap ic_slides_round
 mipmap testimagetwo
+string IngredientWString
 string IngredientsString
 string StepsString
 string abc_action_bar_home_description
@@ -1536,8 +1549,10 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string add_widget
 string app_name
 string appbar_scrolling_view_behavior
+string appwidget_text
 string bottom_sheet_behavior
 string buffering_string
 string character_counter_content_description
@@ -1606,6 +1621,7 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string popularityHint
+string quantity
 string releaseData_Prepending
 string release_date
 string release_dateHint
@@ -1616,6 +1632,7 @@ string reviews
 string reviewsString
 string reviews_detail
 string search_menu_title
+string see_there
 string sort_by_popularity
 string sort_by_rate
 string status_bar_notification_info_overflow
@@ -2219,3 +2236,4 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml recipes_widget_info
