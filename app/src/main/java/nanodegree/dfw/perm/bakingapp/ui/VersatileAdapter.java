@@ -11,11 +11,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
-import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipiesHandler;
+import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipesHandler;
 
 public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.MovieViewHolder> {
 
-    private ArrayList<RecipiesHandler> recipiesHForAdapter;
+    private ArrayList<RecipesHandler> recipiesHForAdapter;
     private OnRecipesClickListener mRecipesClickListener;
 
     int adapterPosition = 0;
@@ -33,7 +33,7 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
          *                    initially used for MainActivity posters that is
          *                    starting point for the App
          **/
-        default void onRecipesSelected(RecipiesHandler reipesId) { }
+        default void onRecipesSelected(RecipesHandler reipesId) { }
     }
 
     public VersatileAdapter(OnRecipesClickListener recipesItemsClickListener) {
@@ -78,7 +78,7 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder movieViewHolder, int position) {
-        RecipiesHandler mRecipeStr = recipiesHForAdapter.get(position);
+        RecipesHandler mRecipeStr = recipiesHForAdapter.get(position);
         recipesStr = mRecipeStr.getName();
         tvRecipes.setText(recipesStr);
     }
@@ -93,7 +93,7 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
     /** Favorite Movies Handler
      * @param recipiesListIn brings in the List of recipes List
      **/
-    public void setRecipes(ArrayList<RecipiesHandler> recipiesListIn) {                         // Recipes
+    public void setRecipes(ArrayList<RecipesHandler> recipiesListIn) {                         // Recipes
         recipiesHForAdapter = recipiesListIn;
         notifyDataSetChanged();
     }

@@ -13,8 +13,6 @@ import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import timber.log.Timber;
 
 
-
-
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
  * a service on a separate handler thread.
@@ -41,9 +39,6 @@ public class WidgetIngService extends IntentService {
     }
 
     /** added methods to implement broadCastReceiver ENDS **/
-
-
-
 
     @Override
     protected void onHandleIntent(Intent intent) {

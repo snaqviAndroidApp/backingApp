@@ -7,20 +7,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
-import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipiesHandler;
+import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipesHandler;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 
 public class BakingJsonUtils {
 
-    private static final String MOVIE_RESULTS = "results";
-    private static final String MOVIE_TRAILER_KEY = "key";
-
-    /**
-     * Baking App
-     **/
     private static final String BAKING_ID = "id";
     private static final String BAKING_NAME = "name";
     private static final String BAKING_SERVINGS = "servings";
@@ -38,14 +31,12 @@ public class BakingJsonUtils {
     private static final String BAKING_STEPS_VIDEOURL = "videoURL";
     private static final String BAKING_STEPS_THUMBURL = "thumbnailURL";
 
-    public static ArrayList<RecipiesHandler> parseBakingJnData(Context context, String _rawJBakingData)
+    public static ArrayList<RecipesHandler> parseBakingJnData(Context context, String _rawJBakingData)
                 throws JSONException {
-        ArrayList<RecipiesHandler> recipiesList = new ArrayList<>();
+
+        ArrayList<RecipesHandler> recipiesList = new ArrayList<>();
         Integer jObjectLength = new JSONArray(_rawJBakingData).length();
         ArrayList<JSONObject> _bakings = new ArrayList<>();
-
-        final HashMap recipies = new HashMap();
-
         ArrayList<Ingredients> interimIng;
         ArrayList<Steps> interimSteps;
 
@@ -76,7 +67,7 @@ public class BakingJsonUtils {
                     }
 
                     recipiesList.add(
-                            new RecipiesHandler(
+                            new RecipesHandler(
                                     i.getInt(BAKING_ID),
                                     i.getString(BAKING_NAME),
                                     interimIng,
@@ -89,9 +80,8 @@ public class BakingJsonUtils {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                interimIng = null; interimSteps = null;
             }
 
-            return recipiesList;             // to be corrected later
+            return recipiesList;
          }
     }

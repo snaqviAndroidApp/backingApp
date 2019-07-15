@@ -56,21 +56,21 @@ public class RecipesWidget extends AppWidgetProvider {
 
 
         /** to check if mainAct triggers **/
-        Intent mainIntent = new Intent(context, MainActivity.class);
-        mainIntent.addCategory(Intent.ACTION_MAIN);
-        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        mainIntent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent mainPendingIntent = PendingIntent.getActivity(context, 0, mainIntent, 0);
+//        Intent mainIntent = new Intent(context, MainActivity.class);
+//        mainIntent.addCategory(Intent.ACTION_MAIN);
+//        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+//        mainIntent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        PendingIntent mainPendingIntent = PendingIntent.getActivity(context, 0, mainIntent, 0);
         /** to check if mainAct triggers ENDS **/
 
 
 
-        views.setOnClickPendingIntent(R.id.gv_parent_for_widget, mainPendingIntent);
+//        views.setOnClickPendingIntent(R.id.gv_parent_for_widget, mainPendingIntent);
 
 
 
 
-        Intent recipeWIntent = new Intent(context, DetailsActivity.class);
+        Intent recipeWIntent = new Intent(context, DetailsActivity.class);              // putting Main Activity doesn't make any diff
         PendingIntent pendingIntentRecipe = PendingIntent.getBroadcast(context
                 , 0
                 ,recipeWIntent
@@ -94,10 +94,6 @@ public class RecipesWidget extends AppWidgetProvider {
     private static void manualUpdateRecipeWidgets(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds
             , String passedInName) {
 
-//
-//
-//
-//
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId, passedInName);
         }
