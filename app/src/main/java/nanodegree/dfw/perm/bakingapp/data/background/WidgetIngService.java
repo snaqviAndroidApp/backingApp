@@ -28,6 +28,7 @@ public class WidgetIngService extends IntentService {
     }
 
     /** added methods to implement broadCastReceiver **/
+//    public static void startWidgetService(Context context, ArrayList<Ingredients> ingredientsListFromActivity, String name) {
     public static void startWidgetService(Context context, ArrayList<Ingredients> ingredientsListFromActivity, String name) {
         Intent intent = new Intent(context, WidgetIngService.class);
 
@@ -57,8 +58,13 @@ public class WidgetIngService extends IntentService {
         Intent intent = new Intent("android.appwidget.action.APPWIDGET_UPDATE");
         intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
 
-        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, Parcels.wrap(ingredientsListFromActivity));
-        intent.putExtra("name", name);
+//        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, Parcels.wrap(ingredientsListFromActivity));
+//        intent.putExtra("name", name);
+
+        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, "Hello from IntentService");
+        intent.putExtra("name", "dummyName");
+
+
         sendBroadcast(intent);
     }
 

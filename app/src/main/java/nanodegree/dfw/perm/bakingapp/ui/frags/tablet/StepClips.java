@@ -143,7 +143,6 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
 //        Resources resClips = contextClips.getResources(); // wrong approach, needs getActivity.getResources()
         Resources resClips = getActivity().getResources();
 
-
         if (savedInstanceState == null) {
             playWhenReady = true;
             currentWindow = 0;

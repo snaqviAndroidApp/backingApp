@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
 import nanodegree.dfw.perm.bakingapp.data.Strings;
+import nanodegree.dfw.perm.bakingapp.data.background.WidgetIngService;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 import nanodegree.dfw.perm.bakingapp.ui.IngredientsAdapter;
@@ -140,6 +141,10 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
             mStepsRecyclerView.setLayoutManager(stepsLayoutManager);
             mStepsRecyclerView.setHasFixedSize(true);
 //        }
+
+        WidgetIngService.startWidgetService(getActivity().getBaseContext(), _dIngredientsList, _dName);                 // Experimental
+
+
         setAdapter();
 
         return rootDView;
@@ -169,6 +174,8 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
             );
         });
         _dStepsList = (ArrayList<Steps>) mIntent.getExtras().get(STEPS_List);
+
+//        WidgetIngService.startWidgetService(getActivity().getBaseContext(), _dIngredientsList, _dName);
     }
 
     public void getTwoPaneValDetail(boolean bValDetail){
