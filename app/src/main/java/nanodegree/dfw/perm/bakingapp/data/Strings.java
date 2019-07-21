@@ -23,21 +23,6 @@ public class Strings {
     public static final String ACTION_VIEW = "com.google.android.exoplayer.demo.action.VIEW";
     public static final String EXTENSION_EXTRA = "extension";
 
-    public static final String ACTION_VIEW_LIST =
-            "com.google.android.exoplayer.demo.action.VIEW_LIST";
-    public static final String URI_LIST_EXTRA = "uri_list";
-    public static final String EXTENSION_LIST_EXTRA = "extension_list";
-
-    public static final String AD_TAG_URI_EXTRA = "ad_tag_uri";
-
-    public static final String ABR_ALGORITHM_EXTRA = "abr_algorithm";
-    public static final String ABR_ALGORITHM_DEFAULT = "default";
-    public static final String ABR_ALGORITHM_RANDOM = "random";
-
-    public static final String SPHERICAL_STEREO_MODE_EXTRA = "spherical_stereo_mode";
-    public static final String SPHERICAL_STEREO_MODE_MONO = "mono";
-    public static final String SPHERICAL_STEREO_MODE_TOP_BOTTOM = "top_bottom";
-    public static final String SPHERICAL_STEREO_MODE_LEFT_RIGHT = "left_right";
     public static final String KEY_PLAY_WHEN_READY = "play_when_ready";
 
 

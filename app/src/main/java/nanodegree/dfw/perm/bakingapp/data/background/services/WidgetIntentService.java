@@ -1,9 +1,8 @@
-package nanodegree.dfw.perm.bakingapp.data.background;
+package nanodegree.dfw.perm.bakingapp.data.background.services;
 
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcel;
 
 import org.parceler.Parcels;
 
@@ -19,22 +18,24 @@ import timber.log.Timber;
  * <p>
  * TODO: Customize class - update intent actions and extra parameters.
  */
-public class WidgetIngService extends IntentService {
+public class WidgetIntentService extends IntentService {
+
+    Context context = null;
 
     public static final String INGREDIENT_LIST_FROM_DETAIL_ACTIVITY = "INGREDIENT_LIST_FROM_DETAIL_ACTIVITY";
 
-    public WidgetIngService() {
-        super("WidgetIngService");
+    public WidgetIntentService() {
+
+        super("WidgetIntentService");
     }
 
     /** added methods to implement broadCastReceiver **/
-//    public static void startWidgetService(Context context, ArrayList<Ingredients> ingredientsListFromActivity, String name) {
     public static void startWidgetService(Context context, ArrayList<Ingredients> ingredientsListFromActivity, String name) {
-        Intent intent = new Intent(context, WidgetIngService.class);
+        Intent intent = new Intent(context, WidgetIntentService.class);
 
         intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, Parcels.wrap(ingredientsListFromActivity)); // original
         intent.putExtra("name", name);
-        Timber.w("service class received name as %s", name);
+        Timber.d("RecipesWidgetProvider class received name as %s", name);
 
         context.startService(intent);
     }
@@ -45,25 +46,23 @@ public class WidgetIngService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
 
+            context = getApplication().getBaseContext();
+
             //make new arraylist from the intent and handle it in other method
             ArrayList<Ingredients> ingredients = Parcels.unwrap(intent.getParcelableExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY));
-            Timber.w("service class received name as %s and passing to handle widget update", intent.getStringExtra("name"));
-            handleWidgetUpdate(ingredients, intent.getStringExtra("name"));
+            Timber.d("IntentService class received name: %s ", intent.getStringExtra("name"));
+            handleWidgetUpdate(context, ingredients, intent.getStringExtra("name"));
 
         }
     }
 
-    private void handleWidgetUpdate(ArrayList<Ingredients> ingredientsListFromActivity, String name) {
+    private void handleWidgetUpdate(Context context, ArrayList<Ingredients> ingredientsListFromActivity, String name) {
 
         Intent intent = new Intent("android.appwidget.action.APPWIDGET_UPDATE");
         intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
-
-//        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, Parcels.wrap(ingredientsListFromActivity));
-//        intent.putExtra("name", name);
-
-        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, "Hello from IntentService");
-        intent.putExtra("name", "dummyName");
-
+        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, Parcels.wrap(ingredientsListFromActivity));
+        intent.putExtra("name", name);
+        Timber.d("_just before sendBroadcast()..");
 
         sendBroadcast(intent);
     }

@@ -75,6 +75,8 @@
     <string name="IngredientWString">Ingredients</string>
     <string name="quantity">quantity</string>
     <string name="see_there">there</string>
+    <string name="IngredientTest"> Widgets ABC</string>
+    <string name="empty_view_text">Empty View</string>
 
 
 </resources>

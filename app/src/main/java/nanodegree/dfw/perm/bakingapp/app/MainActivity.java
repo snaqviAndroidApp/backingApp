@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
 import nanodegree.dfw.perm.bakingapp.R;
+import nanodegree.dfw.perm.bakingapp.data.background.services.BuildConfig;
 import nanodegree.dfw.perm.bakingapp.data.db.MoviesDatabase;
 import nanodegree.dfw.perm.bakingapp.ui.frags.FragmentRecipesMain;
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements FragmentRecipesMain.OnFragmentInteractionListener {
 
@@ -20,9 +22,15 @@ public class MainActivity extends AppCompatActivity implements FragmentRecipesMa
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
+        Timber.d("MainActivity received name ");
+
         determinePaneLayout();
         if(!isTwoPane){
-            FragmentRecipesMain fragmentReceipesMain = new FragmentRecipesMain();    // trying to replace MainAct-layout with a Fragment based
+            FragmentRecipesMain fragmentReceipesMain = new FragmentRecipesMain();
             FragmentManager fragMain = getSupportFragmentManager();
             fragMain.beginTransaction()
                     .add(R.id.frMainRecipes_container, fragmentReceipesMain)
@@ -37,10 +45,10 @@ public class MainActivity extends AppCompatActivity implements FragmentRecipesMa
         }
     }
 
-    private void determinePaneLayout() {                    // checking for Second-Pane availability
+    private void determinePaneLayout() {                                            // checking for Second-Pane availability
         isTwoPane = false;
         FrameLayout fragmentItemDetail = findViewById(R.id.dummyFrame);
-        if (fragmentItemDetail != null) {                               // If there is a second pane for details
+        if (fragmentItemDetail != null) {                                           // If there is a second pane for details
             isTwoPane = true;
         }
     }

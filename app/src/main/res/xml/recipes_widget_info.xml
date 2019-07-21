@@ -2,11 +2,14 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/recipes_widget"
     android:initialLayout="@layout/recipes_widget"
-    android:minWidth="40dp"
-    android:minHeight="40dp"
+    android:minWidth="110dp"
+    android:minHeight="160dp"
     android:previewImage="@drawable/exo_edit_mode_logo"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen">
 
 </appwidget-provider>
+
+
+    <!--android:updatePeriodMillis="0"   as static data is going to be coming in-->

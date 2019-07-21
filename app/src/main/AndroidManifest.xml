@@ -15,11 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.Bridge">
 
-        <service android:name=".data.background.WidgetIngService" />
-        <service
-            android:name=".data.background.WidgetGridRemoteViewService" />
+        <service android:name=".data.background.services.WidgetIntentService" />
+        <service android:name=".data.background.services.WidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
-        <receiver android:name=".utilities.widget.RecipesWidget">
+        <receiver android:name=".utilities.widget.RecipesWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

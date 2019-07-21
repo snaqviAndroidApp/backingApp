@@ -15,7 +15,7 @@ import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipesHandler;
 
 public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.MovieViewHolder> {
 
-    private ArrayList<RecipesHandler> recipiesHForAdapter;
+    private ArrayList<RecipesHandler> recipesHForAdapter;
     private OnRecipesClickListener mRecipesClickListener;
 
     int adapterPosition = 0;
@@ -24,16 +24,7 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
 
 
     public interface OnRecipesClickListener {
-        /**
-         * Successful implementation of onClick Event Handling for MainActivity Posters
-         * as well as for Favorite-Posters
-         *
-         * @param reipesId for MainPosters
-         *                    that are being painted on same recyclerView that was
-         *                    initially used for MainActivity posters that is
-         *                    starting point for the App
-         **/
-        default void onRecipesSelected(RecipesHandler reipesId) { }
+        default void onRecipesSelected(RecipesHandler recipesId) { }
     }
 
     public VersatileAdapter(OnRecipesClickListener recipesItemsClickListener) {
@@ -60,7 +51,7 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
         @Override
         public void onClick(View v) {
             adapterPosition = getAdapterPosition();
-            mRecipesClickListener.onRecipesSelected(recipiesHForAdapter.get(adapterPosition));
+            mRecipesClickListener.onRecipesSelected(recipesHForAdapter.get(adapterPosition));
         }
     }
 
@@ -78,15 +69,15 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder movieViewHolder, int position) {
-        RecipesHandler mRecipeStr = recipiesHForAdapter.get(position);
+        RecipesHandler mRecipeStr = recipesHForAdapter.get(position);
         recipesStr = mRecipeStr.getName();
         tvRecipes.setText(recipesStr);
     }
 
     @Override
     public int getItemCount() {
-        if(null == recipiesHForAdapter) return 0;
-        return recipiesHForAdapter.size();
+        if(null == recipesHForAdapter) return 0;
+        return recipesHForAdapter.size();
     }
 
 
@@ -94,7 +85,7 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
      * @param recipiesListIn brings in the List of recipes List
      **/
     public void setRecipes(ArrayList<RecipesHandler> recipiesListIn) {                         // Recipes
-        recipiesHForAdapter = recipiesListIn;
+        recipesHForAdapter = recipiesListIn;
         notifyDataSetChanged();
     }
 

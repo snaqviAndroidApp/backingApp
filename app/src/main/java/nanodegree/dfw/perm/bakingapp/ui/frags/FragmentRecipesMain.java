@@ -25,7 +25,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 
 import nanodegree.dfw.perm.bakingapp.R;
-import nanodegree.dfw.perm.bakingapp.data.background.services.FetchRecipes;
+import nanodegree.dfw.perm.bakingapp.data.background.services.WidgetIntentService;
+import nanodegree.dfw.perm.bakingapp.data.background.services.FetchRecipesTask;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipesHandler;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
@@ -169,9 +170,14 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
         Intent iDetailsAct = new Intent(getActivity(), DetailsActivity.class);
         iDetailsAct.putExtra(NAME, recipeId.getName());
         iDetailsAct.putParcelableArrayListExtra(INGREDIENTS_List, recipeId.getIngredients());
-        iDetailsAct.putParcelableArrayListExtra(STEPS_List
-                , recipeId.getSteps());
+        iDetailsAct.putParcelableArrayListExtra(STEPS_List, recipeId.getSteps());
         startActivity(iDetailsAct);
+
+        /** trying to update the Widget manually **/
+        WidgetIntentService.startWidgetService(getActivity().getBaseContext(), recipeId.getIngredients(), recipeId.getName());
+        /** trying to update the Widget manually ENDS **/
+
+
     }
 
     public interface OnFragmentInteractionListener {
@@ -182,7 +188,7 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
     public void getRecipes(boolean connection) {
         if(connection){
             mLoadIndicator.setVisibility(View.VISIBLE);
-            FetchRecipes fetchRecipes = new FetchRecipes(getActivity().getBaseContext(), new OnRunInBackground<ArrayList<RecipesHandler>>(){
+            FetchRecipesTask fetchRecipes = new FetchRecipesTask(getActivity().getBaseContext(), new OnRunInBackground<ArrayList<RecipesHandler>>(){
                 @Override
                 public void onSuccess(ArrayList<RecipesHandler> object) {
                     mLoadIndicator.setVisibility(View.INVISIBLE);
@@ -198,9 +204,9 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
         }
     }
 
-    private void sendRecipesPosters(ArrayList<RecipesHandler> recipiesHandlers) {
+    private void sendRecipesPosters(ArrayList<RecipesHandler> recipesHandlers) {
         versatileAdapter = new VersatileAdapter(FragmentRecipesMain.this);
-        versatileAdapter.setRecipes(recipiesHandlers);
+        versatileAdapter.setRecipes(recipesHandlers);
         mRecyclerView.setAdapter(versatileAdapter);
     }
 

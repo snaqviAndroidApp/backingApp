@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
 import nanodegree.dfw.perm.bakingapp.data.Strings;
-import nanodegree.dfw.perm.bakingapp.data.background.WidgetIngService;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 import nanodegree.dfw.perm.bakingapp.ui.IngredientsAdapter;
@@ -40,10 +39,7 @@ import static nanodegree.dfw.perm.bakingapp.data.Strings.STEP_CLIP_TEXT;
  */
 public class FragmentRecipesDetails extends Fragment implements StepsAdapter.StepsOnClickHandler {
 
-    //public class FragmentRecipesDetails extends Fragment {
-
     View rootDView;
-
     private Steps stepsInDetails;
 
     LinearLayoutManager ingredientsLayoutManager;
@@ -98,6 +94,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -142,11 +139,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
             mStepsRecyclerView.setHasFixedSize(true);
 //        }
 
-        WidgetIngService.startWidgetService(getActivity().getBaseContext(), _dIngredientsList, _dName);                 // Experimental
-
-
         setAdapter();
-
         return rootDView;
     }
 
@@ -174,8 +167,6 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
             );
         });
         _dStepsList = (ArrayList<Steps>) mIntent.getExtras().get(STEPS_List);
-
-//        WidgetIngService.startWidgetService(getActivity().getBaseContext(), _dIngredientsList, _dName);
     }
 
     public void getTwoPaneValDetail(boolean bValDetail){
@@ -232,6 +223,7 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         bStepsClips.putString(Strings.STEP_CLIP_INDEX, stepsInDetails.getVideoURL());
         bStepsClips.putInt(Strings.STEP_INDEX, adapterPos);
         bStepsClips.putString(STEP_CLIP_TEXT, stepsInDetails.getDescription());
+
         if (bTwoPaneFromAct_detail) {
             FragmentManager fragDetailsSelf = getActivity().getSupportFragmentManager();
             StepClips _insideFragDetails = new StepClips();
