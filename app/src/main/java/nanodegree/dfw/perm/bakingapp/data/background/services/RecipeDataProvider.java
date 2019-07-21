@@ -52,7 +52,6 @@ public class RecipeDataProvider implements RemoteViewsService.RemoteViewsFactory
 
     @Override
     public int getCount() {
-//        return mCollection != null ? mCollection.size() : 0;
         return mCollectionDummy != null ? mCollectionDummy.size() : 0;
     }
 
