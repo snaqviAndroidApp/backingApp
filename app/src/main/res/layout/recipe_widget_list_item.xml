@@ -2,25 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/widget_marginExtra"
+    android:background="@color/colorPhClips"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/IngredientsString"
-        android:id="@+id/tv_widget_ingredient" />
 
     <TextView
-        android:id="@+id/tv_widget_qty"
-        android:layout_width="wrap_content"
-        android:text="@string/quantity"
-        android:layout_height="wrap_content" />
+    android:id="@+id/tvRecipesName"
+    android:layout_width="match_parent"
+    android:hint="@string/Sample_Name"
+    android:gravity="center"
+    android:textStyle="bold|italic"
+    android:textSize="18dp"
+    android:layout_marginBottom="@dimen/widget_marginExtra"
+    android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_widget_measure"
-        android:text="@string/see_there" />
+        android:gravity="start"
+        android:hint="@string/IngredientsString"
+        android:id="@+id/tvWidget_ingredient" />
+
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tvWidget_measure"-->
+        <!--android:hint="@string/see_there" />-->
 
 
 </LinearLayout>

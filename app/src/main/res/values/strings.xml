@@ -73,8 +73,8 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="IngredientWString">Ingredients</string>
-    <string name="quantity">quantity</string>
-    <string name="see_there">there</string>
+    <string name="quantity">quantity_sample</string>
+    <string name="Sample_Name">Recipes</string>
     <string name="IngredientTest"> Widgets ABC</string>
     <string name="empty_view_text">Empty View</string>
 

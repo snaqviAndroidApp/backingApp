@@ -16,22 +16,16 @@ import timber.log.Timber;
 
 public class FetchRecipesTask extends AsyncTask<String, Void, ArrayList<RecipesHandler>> {
 
-
-    /** Implementing callback() using inferface **/
     private OnRunInBackground<ArrayList<RecipesHandler>> mCallBack;
-
     private Context mContext;
     public Exception mException;
+    ArrayList<RecipesHandler> bakingJDataParsed;
+    String _jRawBakingData;
 
     public FetchRecipesTask(Context context, OnRunInBackground callback){
         mCallBack = callback;
         mContext = context;
     }
-
-    /** Implementing callback() using inferface ENDS **/
-
-    ArrayList<RecipesHandler> bakingJDataParsed;
-    String _jrawBakingData;
 
     @Override
     protected void onPreExecute() {
@@ -40,11 +34,11 @@ public class FetchRecipesTask extends AsyncTask<String, Void, ArrayList<RecipesH
 
     @Override
     protected ArrayList<RecipesHandler> doInBackground(String... param) {
-        _jrawBakingData = null;
+        _jRawBakingData = null;
         URL bakingInput = NetworkUtils.buildBakingUrl();
         try {
-            _jrawBakingData = NetworkUtils.getResponseFromHttpUrl(bakingInput);
-            bakingJDataParsed = BakingJsonUtils.parseBakingJnData(mContext, _jrawBakingData);
+            _jRawBakingData = NetworkUtils.getResponseFromHttpUrl(bakingInput);
+            bakingJDataParsed = BakingJsonUtils.parseBakingJnData(mContext, _jRawBakingData);
             return bakingJDataParsed;
         } catch (IOException e) {
             mException = e;
@@ -58,11 +52,9 @@ public class FetchRecipesTask extends AsyncTask<String, Void, ArrayList<RecipesH
 
     @Override
     protected void onPostExecute(ArrayList<RecipesHandler> recipesHandlers) {
-
         if(mCallBack != null){
             if(mException == null){
                 mCallBack.onSuccess(recipesHandlers);
-
             }else {
                 mCallBack.onFailure(mException);
             }

@@ -140,7 +140,6 @@ public class StepClips extends Fragment implements StepsAdapter.StepsOnClickHand
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        Resources resClips = contextClips.getResources(); // wrong approach, needs getActivity.getResources()
         Resources resClips = getActivity().getResources();
 
         if (savedInstanceState == null) {

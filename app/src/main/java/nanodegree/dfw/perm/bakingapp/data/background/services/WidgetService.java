@@ -9,7 +9,8 @@ public class WidgetService extends RemoteViewsService {
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
 
-        return new RecipeDataProvider(this, intent);
+//        return new RecipeRemoteViewsFactory(this, intent);
+        return new RecipeRemoteViewsFactory(this.getApplicationContext(), intent);
     }
 
 }

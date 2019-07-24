@@ -12,13 +12,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import nanodegree.dfw.perm.bakingapp.R;
+import nanodegree.dfw.perm.bakingapp.data.background.services.WidgetIntentService;
 
 public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.ReviewsViewHolder> {
-
-    /** the code that works fine with StringBuilder
-     * however needs hardcoding for getItemCount() to be '1'
-     *
-     */
 
     private static final String TAG = StepsAdapter.class.getSimpleName();
     private ArrayList<String> mReviewsClicked;
@@ -55,7 +51,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     public void onBindViewHolder(ReviewsViewHolder pholder, int position) {
         if(getItemCount() != 0){
             pholder.bind(mReviewsClicked.get(position));
-            colorNum += 10;
+//            colorNum += 10;
         }
     }
 

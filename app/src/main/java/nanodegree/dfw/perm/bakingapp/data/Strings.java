@@ -3,8 +3,8 @@ package nanodegree.dfw.perm.bakingapp.data;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 
-//public final class Strings {
-public class Strings {
+public final class Strings {
+//public class Strings {
 
     public static final String NAME = "Name";
     public static final String INGREDIENTS_List = "indexIngredients";
@@ -45,6 +45,13 @@ public class Strings {
 
 /** Widgets' **/
 // public static final String INGREDIENT_LIST_FROM_DETAIL_ACTIVITY = "INGREDIENT_LIST_FROM_DETAIL_ACTIVITY";
+
+    public static final String WIDGETS_RECIPES_NAME = "name";
+    public static final String WIDGETS_RECIPES_INGREDIENTS = "ingredients";
+    public static final String TOAST_ACTION = "com.example.android.stackwidget.TOAST_ACTION";
+    public static final String EXTRA_ITEM = "com.example.android.stackwidget.EXTRA_ITEM";
+    public static final String ACTION_APPWIDGET_UPDATE = "android.appwidget.action.APPWIDGET_UPDATE";
+    public static final String WIDGETS_RECIPES_INGREDIENTS_STRING = "wString_Ingredients";
 
 /** Widgets' ENDS **/
 

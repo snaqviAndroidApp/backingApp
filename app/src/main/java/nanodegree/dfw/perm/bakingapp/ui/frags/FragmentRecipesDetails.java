@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import nanodegree.dfw.perm.bakingapp.R;
 import nanodegree.dfw.perm.bakingapp.data.Strings;
+import nanodegree.dfw.perm.bakingapp.data.background.services.WidgetIntentService;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
 import nanodegree.dfw.perm.bakingapp.ui.IngredientsAdapter;
@@ -166,6 +167,8 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
                             + "\nMeasure: " + dINDetails.getMeasure() + "\n"
             );
         });
+
+        WidgetIntentService.startWidgetService(getActivity().getBaseContext(), listIngredients, _dName);        // Triggering Intent-Service
         _dStepsList = (ArrayList<Steps>) mIntent.getExtras().get(STEPS_List);
     }
 
@@ -223,13 +226,11 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         bStepsClips.putString(Strings.STEP_CLIP_INDEX, stepsInDetails.getVideoURL());
         bStepsClips.putInt(Strings.STEP_INDEX, adapterPos);
         bStepsClips.putString(STEP_CLIP_TEXT, stepsInDetails.getDescription());
-
         if (bTwoPaneFromAct_detail) {
             FragmentManager fragDetailsSelf = getActivity().getSupportFragmentManager();
             StepClips _insideFragDetails = new StepClips();
             _insideFragDetails.setArguments(bStepsClips);
             _insideFragDetails.setBundle(true);                     // Sending Valid Clips to TabletStepDetails
-
             fragDetailsSelf.beginTransaction()
                     .replace(R.id.frDetails_container_land_sec, _insideFragDetails)          // inflating the right-Tablet (2nd) Fragment
                     .commit();

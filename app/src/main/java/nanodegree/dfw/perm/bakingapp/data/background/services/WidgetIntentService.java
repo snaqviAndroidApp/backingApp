@@ -3,14 +3,12 @@ package nanodegree.dfw.perm.bakingapp.data.background.services;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-
-import org.parceler.Parcels;
-
 import java.util.ArrayList;
-
-import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import timber.log.Timber;
 
+import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_INGREDIENTS;
+import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_INGREDIENTS_STRING;
+import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_NAME;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -21,22 +19,20 @@ import timber.log.Timber;
 public class WidgetIntentService extends IntentService {
 
     Context context = null;
-
-    public static final String INGREDIENT_LIST_FROM_DETAIL_ACTIVITY = "INGREDIENT_LIST_FROM_DETAIL_ACTIVITY";
+    static Intent intent;
+    static String nameToSend;
+    static String ingredientsToSend;
+    private static ArrayList<String> ingredientsList;
 
     public WidgetIntentService() {
-
         super("WidgetIntentService");
     }
 
     /** added methods to implement broadCastReceiver **/
-    public static void startWidgetService(Context context, ArrayList<Ingredients> ingredientsListFromActivity, String name) {
-        Intent intent = new Intent(context, WidgetIntentService.class);
-
-        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, Parcels.wrap(ingredientsListFromActivity)); // original
-        intent.putExtra("name", name);
-        Timber.d("RecipesWidgetProvider class received name as %s", name);
-
+    public static void startWidgetService(Context context, ArrayList<String> ingredientsListFromActivity, String name) {
+        intent = new Intent(context, WidgetIntentService.class);
+        intent.putStringArrayListExtra(WIDGETS_RECIPES_INGREDIENTS, ingredientsListFromActivity);   // original
+        intent.putExtra(WIDGETS_RECIPES_NAME, name);
         context.startService(intent);
     }
 
@@ -45,26 +41,27 @@ public class WidgetIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
-
             context = getApplication().getBaseContext();
+            ingredientsList = intent.getStringArrayListExtra(WIDGETS_RECIPES_INGREDIENTS);
+            StringBuilder strToSend = new StringBuilder();
+            ingredientsList.forEach(inIndex -> {
+                strToSend.append(inIndex);
+            });
+            ingredientsToSend = strToSend.toString();
+            nameToSend = intent.getStringExtra("name");
 
-            //make new arraylist from the intent and handle it in other method
-            ArrayList<Ingredients> ingredients = Parcels.unwrap(intent.getParcelableExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY));
-            Timber.d("IntentService class received name: %s ", intent.getStringExtra("name"));
-            handleWidgetUpdate(context, ingredients, intent.getStringExtra("name"));
-
+            handleWidgetUpdate();
         }
     }
 
-    private void handleWidgetUpdate(Context context, ArrayList<Ingredients> ingredientsListFromActivity, String name) {
-
-        Intent intent = new Intent("android.appwidget.action.APPWIDGET_UPDATE");
-        intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
-        intent.putExtra(INGREDIENT_LIST_FROM_DETAIL_ACTIVITY, Parcels.wrap(ingredientsListFromActivity));
-        intent.putExtra("name", name);
+    private void handleWidgetUpdate() {
+        Intent bIntent = new Intent("android.appwidget.action.APPWIDGET_UPDATE");
+        bIntent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
+        bIntent.putExtra(WIDGETS_RECIPES_INGREDIENTS_STRING, ingredientsToSend);
+        bIntent.putExtra(WIDGETS_RECIPES_NAME, nameToSend);
         Timber.d("_just before sendBroadcast()..");
 
-        sendBroadcast(intent);
+        sendBroadcast(bIntent);     // check Extras()
     }
 
 }
