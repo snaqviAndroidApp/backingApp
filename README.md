@@ -48,13 +48,6 @@ Lambda used to sort, thanks to Java8 features.
 
 
 
-<p>
-
-### Tablet displays 
-
-
-</hr>
-
 <p align="right"><b><i>Phone displays</b></i></p>
 
 </hr>
