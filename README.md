@@ -43,9 +43,7 @@ Lambda used to sort, thanks to Java8 features.
 </p>                                                                                                                           
 </hr>
 
-
-</hr>
-<p>  How are you </p>
+<p>How are you</p>
 </hr>
 </hr>
 <p>
