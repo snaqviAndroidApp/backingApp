@@ -17,6 +17,7 @@ Lambda used to sort, thanks to Java8 features.
 <b><i> 
 
 ### AppWidget displays on Home screen Ingredients list 
+
 </i></b>
 <p>
 <p>  
@@ -24,8 +25,11 @@ Lambda used to sort, thanks to Java8 features.
 <img src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneAppWidget.png"raw="true"width="300"rotate="0"/>
 </p> 
 </hr>
-<p align="right" size="25">
-<b><i>Phone displays</i></b>
+<p align="right">
+<b><i>
+
+### Phone displays</i></b>
+
 </p>
 <p>  
 <p>  
