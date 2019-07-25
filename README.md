@@ -46,26 +46,16 @@ Lambda used to sort, thanks to Java8 features.
 
 </hr>
 <p>
-<p>
-<p>
 <img align="right" src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/tabletMain.jpg"raw="true"width="200"rotate="0" />
 </p>
 </hr>
-
-
-
-
-
 </hr>
 <p>
 <img align="right" src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/tabletDetails.jpg"raw="true"width="200"rotate="0" />
 </p>
-
+</hr>
 </hr>
 <p>
 <img align="right" src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/tabletLand.jpg"raw="true"width="200"rotate="0" />
-
 </p>
 </hr>
-
-
