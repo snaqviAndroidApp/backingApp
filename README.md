@@ -45,11 +45,10 @@ Lambda used to sort, thanks to Java8 features.
 
 </hr>
 <p>
-  
-  
-<p>
-  
-  
+  <p> 
+    ------------------
+    ------------------
+    ------------------
 </p>
 </p>
 </hr>
