@@ -43,8 +43,9 @@ Lambda used to sort, thanks to Java8 features.
 </p>                                                                                                                           
 </hr>
 
-a;dfjk;adfjas;dfj;adf
-;aksdfja;sdfj;adsjf;jads;fasdjf;akldsjf;asdf
+
+
+
 
 <p>
 <p align="right"><b><i>Tablet displays</b></i></p>
