@@ -16,6 +16,9 @@ Output: Master - Detail results are below respectively
 <img src="https://github.com/snaqviAndroidApp/backingApp/blob/master/app/src/main/res/drawable/phoneAppWidget.pngraw=true"width="200"
      rotate="90"
      />
+<img src="https://github.com/snaqviAndroidApp/backingApp/blob/master/app/src/main/res/drawable/tabletLand.jpgraw=true"width="200"
+     rotate="90"
+     />
 </p>                                                                                                                           
 </hr>
 </hr>
