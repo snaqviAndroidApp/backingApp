@@ -14,11 +14,11 @@ Lambda used to sort, thanks to Java8 features.
 <p>
 </p>  
 </hr>
-<b><i> 
+<i> 
 
 ### AppWidget displays on Home screen Ingredients list 
 
-</i></b>
+</i>
 <p>
 <p>  
 </hr>
