@@ -6,11 +6,12 @@
     android:minHeight="160dp"
     android:previewImage="@drawable/exo_edit_mode_logo"
     android:resizeMode="horizontal|vertical"
-    android:autoAdvanceViewId="@id/stack_view">
     android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen">
 
 </appwidget-provider>
 
 
-    <!--android:updatePeriodMillis="0"   as static data is going to be coming in-->
+    <!--android:autoAdvanceViewId="@id/stack_view"-->
+    <!--android:updatePeriodMillis="0"
+    for static data is going to be coming in -->

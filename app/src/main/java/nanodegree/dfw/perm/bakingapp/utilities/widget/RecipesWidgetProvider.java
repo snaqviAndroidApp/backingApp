@@ -12,11 +12,12 @@ import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 
 import nanodegree.dfw.perm.bakingapp.R;
+import nanodegree.dfw.perm.bakingapp.app.MainActivity;
 import nanodegree.dfw.perm.bakingapp.data.background.services.WidgetService;
+import nanodegree.dfw.perm.bakingapp.ui.DetailsActivity;
 import timber.log.Timber;
 
 import static nanodegree.dfw.perm.bakingapp.data.Strings.ACTION_APPWIDGET_UPDATE;
-import static nanodegree.dfw.perm.bakingapp.data.Strings.TOAST_ACTION;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_INGREDIENTS_STRING;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_NAME;
 
@@ -29,6 +30,7 @@ public class RecipesWidgetProvider extends AppWidgetProvider {
                                 int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(),  R.layout.recipes_widget);
         settingRemoteAdapter(context, views, appWidgetId);
+
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
@@ -64,6 +66,7 @@ public class RecipesWidgetProvider extends AppWidgetProvider {
 
         AppWidgetManager mgr = AppWidgetManager.getInstance(context);
         int[] ids = mgr.getAppWidgetIds(new ComponentName(context, RecipesWidgetProvider.class));
+
         if(intent.getAction().equals(ACTION_APPWIDGET_UPDATE)){
             recipeName = intent.getExtras().getString(WIDGETS_RECIPES_NAME);
             recipeIngredients = intent.getExtras().getString(WIDGETS_RECIPES_INGREDIENTS_STRING);
@@ -105,16 +108,14 @@ public class RecipesWidgetProvider extends AppWidgetProvider {
             rViews.setRemoteAdapter(R.id.tvWidget_ingredient, updataIntent);
             rViews.setEmptyView(R.id.tvWidget_ingredient, R.id.empty_view);                          /** Empty View **/
 
-            Intent toastIntent = new Intent(context, RecipesWidgetProvider.class);
-            toastIntent.setAction(TOAST_ACTION);
-            toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            updataIntent.setData(Uri.parse(updataIntent.toUri(Intent.URI_INTENT_SCHEME)));
-            PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context
-                    ,0
-                    , toastIntent
-                    ,PendingIntent.FLAG_UPDATE_CURRENT);
+            /** launching the MainActivity**/
+            Intent intentLaunch = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intentLaunch, 0);
 
-            rViews.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent);
+            // Get the layout for the App Widget and attach an on-click listener to the button
+            rViews.setOnClickPendingIntent(R.id.widget_clips_image, pendingIntent);
+            /** launching the MainActivity ENDS **/
+
             appWidgetManager.updateAppWidget(appWidgetId, rViews);
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);

@@ -177,7 +177,6 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
 //        WidgetIntentService.startWidgetService(getActivity().getBaseContext(), recipeId.getIngredients(), recipeId.getName());
         /** trying to update the Widget manually ENDS **/
 
-
     }
 
     public interface OnFragmentInteractionListener {
