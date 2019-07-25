@@ -16,7 +16,7 @@ Lambda used to sort, thanks to Java8 features.
 </hr>
 <b><i> 
 
-###  AppWidget displays on Home screen Ingredients list 
+### AppWidget displays on Home screen Ingredients list 
 </i></b>
 <p>
 <p>  
