@@ -46,6 +46,7 @@ Lambda used to sort, thanks to Java8 features.
 
 
 <p align="right"><b><i>Tablet displays</b></i></p>
-<imag aling="right" />
+<imag aling="right" 
+src=""/>
 
 
