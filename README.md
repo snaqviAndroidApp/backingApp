@@ -9,7 +9,7 @@ Used grid layout, with RecyclerView to paint it, and there are two sorting using
 Lambda used to sort, thanks to Java8 features. 
 </p>
 
-# Output: Master - Detail results are below respectively
+## Output: Master - Detail results are below respectively
 </hr>
 <p>
 </p>  
