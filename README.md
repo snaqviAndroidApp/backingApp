@@ -42,7 +42,9 @@ Lambda used to sort, thanks to Java8 features.
 <img align="right" src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneVideo.png"raw="true"width="200"rotate="0" />
 </p>                                                                                                                           
 </hr>
-<p>
+
+a;dfjk;adfjas;dfj;adf
+;aksdfja;sdfj;adsjf;jads;fasdjf;akldsjf;asdf
 
 <p>
 <p align="right"><b><i>Tablet displays</b></i></p>
