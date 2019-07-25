@@ -11,6 +11,7 @@ Lambda used to sort, thanks to Java8 features.
 Output: Master - Detail results are below respectively
 </hr>
 <p>
+----------------------------------------------------------------------------
 </p>  
 </hr>
 <b><i> AppWidget displays on Home screen Ingredients list </i></b>
