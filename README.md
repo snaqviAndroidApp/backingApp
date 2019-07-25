@@ -46,8 +46,7 @@ Lambda used to sort, thanks to Java8 features.
 
 
 </hr>
-<p>
-</p>  
+<p> ---------- <p>  
 </hr>
 
 <p ><b><i>Tablet displays</b></i></p>
