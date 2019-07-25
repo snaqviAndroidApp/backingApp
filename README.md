@@ -14,6 +14,7 @@ Output: Master - Detail results are below respectively
 </hr>
 <p align="right"> 
 AppWidget displays on Home screen Ingredients list
+<p align="right">   
 </hr>
 <img src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneAppWidget.png"raw="true"width="200"rotate="0" />
 </p> 
