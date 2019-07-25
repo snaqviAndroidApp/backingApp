@@ -41,12 +41,9 @@ Lambda used to sort, thanks to Java8 features.
 <p>
 <img align="right" src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneVideo.png"raw="true"width="200"rotate="0" />
 </p>                                                                                                                           
-</hr>
 
-</hr>
-<p>
-</p>
-</hr>
+
+
 
 <p>How are you</p>
 
