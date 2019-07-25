@@ -14,8 +14,9 @@ Output: Master - Detail results are below respectively
 </hr>
 <p align="right"> 
 <img src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneAppWidget.png"raw="true"width="200"rotate="0" />
-<img src="https://github.com/snaqviAndroidApp/backingApp/blob/master/app/src/main/res/drawable/tabletLand.jpg"width="200"
-     rotate="90" />
+</p>                                                                                                                           
+</hr>
+<img src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneAppWidget.png"raw="true"width="200"rotate="0" />
 </p>                                                                                                                           
 </hr>
 </hr>
