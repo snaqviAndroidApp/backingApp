@@ -21,6 +21,10 @@ Lambda used to sort, thanks to Java8 features.
 <img src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneAppWidget.png"raw="true"width="300"rotate="0"/>
 </p> 
 </hr>
+<b><i> Phone displays </i></b>
+<p>
+<p>  
+</hr>
 <p>
 <img align="right" src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/tabletLand.jpg"raw="true"width="200"rotate="0" />
 </p>                                                                                                                           
