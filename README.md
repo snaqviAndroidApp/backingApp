@@ -27,10 +27,12 @@ Lambda used to sort, thanks to Java8 features.
 </hr>
 <p>
 <i>
+<p   align="right">
 
 ### Phone displays</i>
 
-<p align="right">
+
+</p>
 </p>
 <p>  
 <p>  
