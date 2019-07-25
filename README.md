@@ -8,6 +8,7 @@ One of the skills in this project is how to handle unexpected input in your data
 Used grid layout, with RecyclerView to paint it, and there are two sorting using rating and popularity
 Lambda used to sort, thanks to Java8 features. 
 </p>
+
 # Output: Master - Detail results are below respectively
 </hr>
 <p>
