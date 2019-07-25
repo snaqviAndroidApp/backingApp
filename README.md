@@ -13,7 +13,8 @@ Output: Master - Detail results are below respectively
 <p> ------------------------------------------------------------------------------- </p>
 </hr>
 <b><i> AppWidget displays on Home screen Ingredients list </i></b>
-<p>   
+<p>
+<p>  
 </hr>
 <img src="https://github.com/snaqviAndroidApp/backingApp/blob/dynamicdata/app/src/main/res/drawable/phoneAppWidget.png"raw="true"width="300"rotate="0"/>
 </p> 
