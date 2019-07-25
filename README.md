@@ -47,6 +47,11 @@ Lambda used to sort, thanks to Java8 features.
 </hr>
 
 
+<i> 
+
+### AppWidget displays on Home screen Ingredients list 
+
+</i>
 
 <p><b><i>Phone displays</b></i></p>
 
