@@ -12,7 +12,8 @@ Output: Master - Detail results are below respectively
 </hr>
 <p> ------------------------------------------------------------------------------- </p>
 </hr>
-<p align="right"> 
+<p align="right">
+  
 # AppWidget displays on Home screen Ingredients list
 <p align="right">   
 </hr>
