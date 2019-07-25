@@ -45,7 +45,9 @@ Lambda used to sort, thanks to Java8 features.
 
 </hr>
 <p>
+  ABC
 <p>
+  DEF
 </p>
 </p>
 </hr>
