@@ -6,6 +6,7 @@ import android.content.Intent;
 import java.util.ArrayList;
 import timber.log.Timber;
 
+import static nanodegree.dfw.perm.bakingapp.data.Strings.ACTION_APPWIDGET_UPDATE;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_INGREDIENTS;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_INGREDIENTS_STRING;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_NAME;
@@ -25,7 +26,7 @@ public class WidgetIntentService extends IntentService {
     private static ArrayList<String> ingredientsList;
 
     public WidgetIntentService() {
-        super("WidgetIntentService");
+        super("WidgetIntentService");   // Name provided to the 'Background / Worker' Thread
     }
 
     /** added methods to implement broadCastReceiver **/
@@ -35,9 +36,22 @@ public class WidgetIntentService extends IntentService {
         intent.putExtra(WIDGETS_RECIPES_NAME, name);
         context.startService(intent);
     }
-
     /** added methods to implement broadCastReceiver ENDS **/
 
+
+    /** Not calling onStartCommand(); below, as it is only handling BroadCastReceiver()
+     * **********
+     *
+     * @Override
+     *     public int onStartCommand(@androidx.annotation.Nullable Intent intent, int flags, int startId) {
+     *         return super.onStartCommand(intent, flags, startId);
+     *     }
+     *
+     ***********
+     */
+
+
+    /** Handling Background tasks: here Broadcast **/
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
@@ -55,8 +69,8 @@ public class WidgetIntentService extends IntentService {
     }
 
     private void handleWidgetUpdate() {
-        Intent bIntent = new Intent("android.appwidget.action.APPWIDGET_UPDATE");
-        bIntent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
+        Intent bIntent = new Intent(ACTION_APPWIDGET_UPDATE);
+//        bIntent.setAction("android.appwidget.action.APPWIDGET_UPDATE");                   // might be redundant
         bIntent.putExtra(WIDGETS_RECIPES_INGREDIENTS_STRING, ingredientsToSend);
         bIntent.putExtra(WIDGETS_RECIPES_NAME, nameToSend);
         Timber.d("_just before sendBroadcast()..");

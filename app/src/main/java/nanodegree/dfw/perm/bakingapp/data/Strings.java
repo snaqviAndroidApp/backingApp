@@ -55,5 +55,13 @@ public final class Strings {
 
 /** Widgets' ENDS **/
 
+/** Retrofit **/
+
+    public static final String RETROFIT_BASE_URL = "https://d17h27t6h515a5.cloudfront.net/";
+
+/** Retrofit ENDS **/
+
+
+
 
 }

@@ -117,28 +117,13 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         intializeDetails(rootDView);
 
         mStepsRecyclerView = rootDView.findViewById(R.id.recyclerview_steps);               // Steps
-        mStepsRecyclerView.setHasFixedSize(true);
         mIngredientsRecyclerView = rootDView.findViewById(R.id.recyclerVIngredients);       // Ingredients
+        ingredientsLayoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
+        mIngredientsRecyclerView.setLayoutManager(ingredientsLayoutManager);
         mIngredientsRecyclerView.setHasFixedSize(true);
-
-//        if(bTwoPaneFromAct_detail){                                                       // Unnecessary conditionality
-            ingredientsLayoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
-            mIngredientsRecyclerView.setLayoutManager(ingredientsLayoutManager);
-            mIngredientsRecyclerView.setHasFixedSize(true);
-
-            stepsLayoutManager = new LinearLayoutManager((getActivity().getBaseContext()), LinearLayoutManager.VERTICAL, false);
-            mStepsRecyclerView.setLayoutManager(stepsLayoutManager);
-            mStepsRecyclerView.setHasFixedSize(true);
-
-//        }else {
-            ingredientsLayoutManager = new LinearLayoutManager(getActivity().getBaseContext(), LinearLayoutManager.VERTICAL, false);
-            mIngredientsRecyclerView.setLayoutManager(ingredientsLayoutManager);
-            mIngredientsRecyclerView.setHasFixedSize(true);
-
-            stepsLayoutManager = new LinearLayoutManager((getActivity().getBaseContext()), LinearLayoutManager.VERTICAL, false);
-            mStepsRecyclerView.setLayoutManager(stepsLayoutManager);
-            mStepsRecyclerView.setHasFixedSize(true);
-//        }
+        stepsLayoutManager = new LinearLayoutManager((getActivity().getBaseContext()), LinearLayoutManager.VERTICAL, false);
+        mStepsRecyclerView.setLayoutManager(stepsLayoutManager);
+        mStepsRecyclerView.setHasFixedSize(true);
 
         setAdapter();
         return rootDView;
@@ -163,12 +148,13 @@ public class FragmentRecipesDetails extends Fragment implements StepsAdapter.Ste
         _dIngredientsList.forEach(dINDetails -> {
             listIngredients.add(
                     "Quantity: " +  dINDetails.getQuantity()
-                            + "\nIngredients: " +  dINDetails.getIngredientsList()
+//                            + "\nIngredients: " +  dINDetails.getIngredientsList()
+                            + "\nIngredients: " +  dINDetails.getIngredients()
                             + "\nMeasure: " + dINDetails.getMeasure() + "\n"
             );
         });
 
-        WidgetIntentService.startWidgetService(getActivity().getBaseContext(), listIngredients, _dName);        // Triggering Intent-Service
+        WidgetIntentService.startWidgetService(getActivity().getBaseContext(), listIngredients, _dName);    // Triggering Intent-Service
         _dStepsList = (ArrayList<Steps>) mIntent.getExtras().get(STEPS_List);
     }
 

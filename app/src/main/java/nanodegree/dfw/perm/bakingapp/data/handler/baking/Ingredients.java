@@ -1,44 +1,40 @@
+
 package nanodegree.dfw.perm.bakingapp.data.handler.baking;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-public class Ingredients implements Parcelable{
+public class Ingredients implements Parcelable {
 
-    private Integer quantity;
+    @SerializedName("quantity")
+    @Expose
+    private Double quantity;
+
+    @SerializedName("measure")
+    @Expose
     private String measure;
-    private String ingredientsList;
+    @SerializedName("ingredient")
+    @Expose
+    private String ingredient;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    public Ingredients() {
-    }
 
-    /**
-     *
-     * @param measure
-     * @param ingredient
-     * @param quantity
-     */
-    public Ingredients(Integer quantity, String measure, String ingredient) {
-        super();
+    public Ingredients(Double quantity, String measure, String ingredient) {
         this.quantity = quantity;
         this.measure = measure;
-        this.ingredientsList = ingredient;
+        this.ingredient = ingredient;
     }
 
     protected Ingredients(Parcel in) {
         if (in.readByte() == 0) {
             quantity = null;
         } else {
-            quantity = in.readInt();
+            quantity = in.readDouble();
         }
         measure = in.readString();
-        ingredientsList = in.readString();
+        ingredient = in.readString();
     }
 
     public static final Creator<Ingredients> CREATOR = new Creator<Ingredients>() {
@@ -53,19 +49,16 @@ public class Ingredients implements Parcelable{
         }
     };
 
-    public Integer getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
+
     public String getMeasure() {
         return measure;
     }
-    public String getIngredientsList() {
-        return ingredientsList;
-    }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("quantity", quantity).append("measure", measure).append("ingredientsList", ingredientsList).toString();
+    public String getIngredients() {
+        return ingredient;
     }
 
     @Override
@@ -79,13 +72,10 @@ public class Ingredients implements Parcelable{
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeInt(quantity);
+            dest.writeDouble(quantity);
         }
         dest.writeString(measure);
-        dest.writeString(ingredientsList);
+        dest.writeString(ingredient);
     }
-
-
-
 
 }

@@ -13,7 +13,7 @@ public class RecipesHandler implements Parcelable{
 
         private Integer id;
         private String name;
-        private ArrayList<Ingredients> ingredients = new ArrayList<Ingredients>();
+        private ArrayList<Ingredients> ingredients = new ArrayList<>();
         private ArrayList<Steps> steps = new ArrayList<Steps>();
         private Integer servings;
         private String image;
@@ -75,6 +75,7 @@ public class RecipesHandler implements Parcelable{
         public String getName() {
             return name;
         }
+
         public ArrayList<Ingredients> getIngredients() {
             return ingredients;
         }

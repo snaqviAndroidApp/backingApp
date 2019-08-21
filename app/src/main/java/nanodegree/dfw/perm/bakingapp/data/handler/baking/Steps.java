@@ -22,10 +22,10 @@ public class Steps implements Parcelable {
         }
 
         /**
-         * @param id
-         * @param shortDescription
-         * @param description
-         * @param videoURL
+         * @param id    Id for the Individual Step
+         * @param shortDescription summary for the step
+         * @param description      details
+         * @param videoURL         supposed full video resource location
          * @param thumbnailURL
          */
         public Steps(Integer id, String shortDescription, String description, String videoURL, String thumbnailURL) {

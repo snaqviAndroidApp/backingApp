@@ -23,6 +23,7 @@ import static nanodegree.dfw.perm.bakingapp.data.Strings.WIDGETS_RECIPES_NAME;
 
 public class RecipesWidgetProvider extends AppWidgetProvider {
 
+    public static final int MAINACTIVITY_PENDING_REQUEST_CODE = 1004;
     static String recipeName;
     static String recipeIngredients;
 
@@ -110,7 +111,7 @@ public class RecipesWidgetProvider extends AppWidgetProvider {
 
             /** launching the MainActivity**/
             Intent intentLaunch = new Intent(context, MainActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intentLaunch, 0);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, MAINACTIVITY_PENDING_REQUEST_CODE, intentLaunch, 0);
 
             // Get the layout for the App Widget and attach an on-click listener to the button
             rViews.setOnClickPendingIntent(R.id.widget_clips_image, pendingIntent);

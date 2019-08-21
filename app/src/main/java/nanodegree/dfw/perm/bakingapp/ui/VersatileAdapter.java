@@ -28,7 +28,6 @@ public class VersatileAdapter extends RecyclerView.Adapter<VersatileAdapter.Movi
     }
 
     public VersatileAdapter(OnRecipesClickListener recipesItemsClickListener) {
-
         try{
             mRecipesClickListener = recipesItemsClickListener;
         }catch (ClassCastException e){

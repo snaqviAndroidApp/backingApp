@@ -2,6 +2,7 @@ package nanodegree.dfw.perm.bakingapp.ui.frags;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -25,38 +27,45 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 
 import nanodegree.dfw.perm.bakingapp.R;
-import nanodegree.dfw.perm.bakingapp.data.background.services.WidgetIntentService;
-import nanodegree.dfw.perm.bakingapp.data.background.services.FetchRecipesTask;
+import nanodegree.dfw.perm.bakingapp.data.background.services.useretrofit.RetrofitInject;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Ingredients;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.RecipesHandler;
 import nanodegree.dfw.perm.bakingapp.data.handler.baking.Steps;
+import nanodegree.dfw.perm.bakingapp.databinding.RecipesMainViewsBinding;
 import nanodegree.dfw.perm.bakingapp.ui.DetailsActivity;
 import nanodegree.dfw.perm.bakingapp.ui.VersatileAdapter;
-import nanodegree.dfw.perm.bakingapp.utilities.OnRunInBackground;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 import static java.util.Objects.requireNonNull;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.INGREDIENTS_List;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.NAME;
+import static nanodegree.dfw.perm.bakingapp.data.Strings.RETROFIT_BASE_URL;
 import static nanodegree.dfw.perm.bakingapp.data.Strings.STEPS_List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentRecipesMain.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentRecipesMain#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FragmentRecipesMain extends Fragment implements VersatileAdapter.OnRecipesClickListener {
+
+    RecipesMainViewsBinding fragBinding;                                    /** Databinding **/
 
     View rootView;
     ArrayList<Ingredients> ingredientsIn;
     ArrayList<Steps> stepsIn;
     /** Code-related fields copied from MainActivity defined here **/
 
-    private RecyclerView mRecyclerView;
+    RecipesHandler retrofitRecipesHandler;
+    private ArrayList<RecipesHandler> retrofitRecipesHandler_List;
 
+    Call<ArrayList<RecipesHandler>> recipesHandlerList_Call;        /**  Retrofit  **/
+
+    private RecyclerView mRecyclerView;
     VersatileAdapter versatileAdapter;
     private ProgressBar mLoadIndicator;
 
@@ -109,13 +118,19 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         _initialize();
-        rootView = inflater.inflate(R.layout.recipes_main_views, container, false);
+        fragBinding = DataBindingUtil.inflate(inflater,  R.layout.recipes_main_views, container, false);    // Data Binding
+        rootView = fragBinding.getRoot();                                                                                    // Data Binding
+        fragBinding.setLifecycleOwner(getActivity());
+
+        rootView = fragBinding.getRoot();                                                                                    // Data Binding
+        fragBinding.setLifecycleOwner(getActivity());
+
         mLoadIndicator = rootView.findViewById(R.id.mv_loading_indicator);              // needs to put in respective in layout files place
         mRecyclerView = rootView.findViewById(R.id.recyclerview_recipes);
+
         if(!bTwoPaneFromAct){
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
             mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -128,9 +143,13 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
         return rootView;
     }
 
+
     private void _initialize() {
         schPeriod = 1;
         threadCounts = 0;
+        retrofitRecipesHandler = new RecipesHandler();               // for retrofit
+        retrofitRecipesHandler_List = new ArrayList<>();
+
         new ConnectionUtilities().getConnCheckHanlde();         // Checking Connectivity (internet)
     }
 
@@ -170,6 +189,7 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
         Intent iDetailsAct = new Intent(getActivity(), DetailsActivity.class);
         iDetailsAct.putExtra(NAME, recipeId.getName());
         iDetailsAct.putParcelableArrayListExtra(INGREDIENTS_List, recipeId.getIngredients());
+
         iDetailsAct.putParcelableArrayListExtra(STEPS_List, recipeId.getSteps());
         startActivity(iDetailsAct);
 
@@ -187,21 +207,48 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
     public void getRecipes(boolean connection) {
         if(connection){
             mLoadIndicator.setVisibility(View.VISIBLE);
-            FetchRecipesTask fetchRecipes = new FetchRecipesTask(getActivity().getBaseContext(), new OnRunInBackground<ArrayList<RecipesHandler>>(){
+
+            /** retrofit call **/
+
+            Gson gson;
+            gson = new Gson();
+            OkHttpClient.Builder httpClientMain = new OkHttpClient.Builder();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(RETROFIT_BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(httpClientMain.build())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())          // didn't make any difference
+                    .build();
+
+            RetrofitInject.RecipeRetrofit recipeRetrofit = retrofit.create(RetrofitInject.RecipeRetrofit.class);
+            recipesHandlerList_Call = recipeRetrofit.getRecipesViaRetrofit(
+                    "topher"
+                    , "2017"
+                    ,"May"
+                    , "59121517_baking"
+            );
+
+            recipesHandlerList_Call.enqueue(new Callback<ArrayList<RecipesHandler>>() {
                 @Override
-                public void onSuccess(ArrayList<RecipesHandler> object) {
+                public void onResponse(Call<ArrayList<RecipesHandler>> call, Response<ArrayList<RecipesHandler>> response) {
+                    retrofitRecipesHandler_List = response.body();
+
+                    Timber.d("inside retrofit onResponse %s", retrofitRecipesHandler_List.toString());
                     mLoadIndicator.setVisibility(View.INVISIBLE);
-                    sendRecipesPosters(object);
+                    sendRecipesPosters(retrofitRecipesHandler_List);
                 }
+
                 @Override
-                public void onFailure(Exception e) {
-                    Toast.makeText(getActivity().getBaseContext(), "Failure in fetching Recipes Data"
-                            , Toast.LENGTH_SHORT).show();
+                public void onFailure(Call<ArrayList<RecipesHandler>> call, Throwable t) {
+                    Timber.d("inside ret_onFailure %s", t.fillInStackTrace().toString());
+
                 }
             });
-            fetchRecipes.execute();
+            /** retrofit call ENDS **/
+
         }
     }
+
 
     private void sendRecipesPosters(ArrayList<RecipesHandler> recipesHandlers) {
         versatileAdapter = new VersatileAdapter(FragmentRecipesMain.this);
@@ -241,7 +288,7 @@ public class FragmentRecipesMain extends Fragment implements VersatileAdapter.On
         }
         private boolean checkConnection() {
             try {
-                int timeoutMs = 5500;
+                int timeoutMs = 3500;
                 Socket sock = new Socket();
                 SocketAddress socketAddress = new InetSocketAddress("8.8.8.8", 53);
                 sock.connect(socketAddress, timeoutMs);

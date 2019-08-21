@@ -94,9 +94,7 @@ public class RecipeRemoteViewsFactory implements RemoteViewsService.RemoteViewsF
 
     private void initData(){
         mCollection.clear();
-        mCollection.add(
-                new WidgetRecipesData(nameFactory, ingredientsFactory)
-        );
+        mCollection.add(new WidgetRecipesData(nameFactory, ingredientsFactory));
     }
 }
 
